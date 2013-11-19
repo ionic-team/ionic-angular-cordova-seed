@@ -1,8 +1,8 @@
 <pane id="app-page" ng-controller="AppCtrl">
-  <tabs>
+  <tabs tabs-style="tabs-icon-top" tabs-type="tabs-positive">
 
     <!-- Pets tab -->
-    <tab title="Pets" ng-controller="PetsTabCtrl">
+    <tab title="Pets" icon="icon ion-home" ng-controller="PetsTabCtrl">
       <header-bar type="bar-positive" title="'Pets'"></header-bar>
       <content has-header="true" has-tabs="true">
         <list>
@@ -16,7 +16,7 @@
     </tab>
 
     <!-- Adoption tab -->
-    <tab title="Adopt">
+    <tab title="Adopt" icon="icon ion-heart">
       <header-bar type="bar-positive" title="'Adopt'"></header-bar>
       <content has-header="true" has-tabs="true">
         <div class="padding">
@@ -40,7 +40,7 @@
     </tab>
 
     <!-- Home tab -->
-    <tab title="About">
+    <tab title="About" icon="icon ion-search">
       <header-bar type="bar-positive" title="'About'"></header-bar>
       <content has-header="true" has-tabs="true" padding="true">
         <h3>About this app</h3>
