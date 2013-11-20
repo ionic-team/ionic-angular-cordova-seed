@@ -1,12 +1,10 @@
 angular.module('starter.controllers', [])
 
-
-/**
- * The main controller for the app.
- */
 .controller('AppCtrl', function($scope) {
+  // Main app controller, empty for the example
 })
 
+// A simple controller that fetches a list of data
 .controller('PetsTabCtrl', function($scope, Pets) {
   $scope.pets = Pets.all();
 
@@ -18,6 +16,7 @@ angular.module('starter.controllers', [])
   });
 })
 
+// A simple controller that shows a tapped item's data
 .controller('PetCtrl', function($scope, $routeParams, Pets) {
   $scope.pet = Pets.get($routeParams.petId);
 });
