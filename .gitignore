@@ -1,2 +1,3 @@
 *.keystore
 *.sw*
+platforms/*
