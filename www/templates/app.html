@@ -9,7 +9,6 @@
 
     <!-- Pets tab -->
     <tab title="Pets" icon="icon ion-home" ng-controller="PetsTabCtrl">
-      <header-bar type="bar-positive" title="'Pets'"></header-bar>
       <content has-header="true" has-tabs="true">
         <list>
           <link-item ng-repeat="pet in pets" type="item-text-wrap" href="/#/pet/{{pet.id}}">
@@ -23,7 +22,6 @@
 
     <!-- Adoption tab -->
     <tab title="Adopt" icon="icon ion-heart">
-      <header-bar type="bar-positive" title="'Adopt'"></header-bar>
       <content has-header="true" has-tabs="true">
         <div class="padding">
           <h2>Adopt a pet today.</h2>
@@ -47,7 +45,6 @@
 
     <!-- Home tab -->
     <tab title="About" icon="icon ion-search">
-      <header-bar type="bar-positive" title="'About'"></header-bar>
       <content has-header="true" has-tabs="true" padding="true">
         <h3>About this app</h3>
         <p>
