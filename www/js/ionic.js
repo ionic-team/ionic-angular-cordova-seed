@@ -1,15 +1,14 @@
-/**
+/*!
  * Copyright 2013 Drifty Co.
  * http://drifty.com/
 
  * Ionic - a powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
- *
  * By @maxlynch, @helloimben, @adamdbradley <3
  *
  * Licensed under the MIT license. Please see LICENSE for more information.
- * 
+ *
  */
 ;
 
@@ -1840,7 +1839,6 @@ window.ionic = {
           return inputTapPolyfill(ele.control, e);
         }
       } else if( ele.tagName === "A" || ele.tagName === "BUTTON" ) {
-        var href = ele.getAttribute('href');
         ionic.trigger('click', {
           target: ele
         });
@@ -2883,17 +2881,8 @@ window.ionic = {
       var _this = this;
 
       window.rAF(ionic.proxy(function() {
-        var i, c, childSize, childStyle;
-        var children = this.el.children;
+        var i, c, childSize;
         var childNodes = this.el.childNodes;
-        var styles = window.getComputedStyle(this.el, null);
-
-        // Get the padding of the header for calculations
-        var paddingLeft = parseFloat(styles['paddingLeft']);
-        var paddingRight = parseFloat(styles['paddingRight']);
-
-        // Get the full width of the header
-        var headerWidth = this.el.offsetWidth;
 
         // Find the title element
         var title = this.el.querySelector('.title');
@@ -2903,7 +2892,7 @@ window.ionic = {
       
         var leftWidth = 0;
         var rightWidth = 0;
-        var titlePos = Array.prototype.indexOf.call(this.el.childNodes, title);
+        var titlePos = Array.prototype.indexOf.call(childNodes, title);
 
         // Compute how wide the left children are
         for(i = 0; i < titlePos; i++) {
@@ -2938,21 +2927,25 @@ window.ionic = {
         // Size and align the header title based on the sizes of the left and
         // right children, and the desired alignment mode
         if(this.alignTitle == 'center') {
-          title.style.left = margin + 'px';
-          title.style.right = margin + 'px';
-
+          if(margin > 10) {
+            title.style.left = margin + 'px';
+            title.style.right = margin + 'px';
+          }
           if(title.offsetWidth < title.scrollWidth) {
-            title.style.textAlign = 'left';
-            title.style.right = (rightWidth + 5) + 'px';
-          } else {
-            title.style.textAlign = 'center';
+            if(rightWidth > 0) {
+              title.style.right = (rightWidth + 5) + 'px';
+            }
           }
         } else if(this.alignTitle == 'left') {
-          title.style.textAlign = 'left';
-          title.style.left = (leftWidth + 15) + 'px';
+          title.classList.add('title-left');
+          if(leftWidth > 0) {
+            title.style.left = (leftWidth + 15) + 'px';
+          }
         } else if(this.alignTitle == 'right') {
-          title.style.textAlign = 'right';
-          title.style.right = (rightWidth + 15) + 'px';
+          title.classList.add('title-right');
+          if(rightWidth > 0) {
+            title.style.right = (rightWidth + 15) + 'px';
+          }
         }
       }, this));
     }
@@ -3233,7 +3226,7 @@ window.ionic = {
       ionic.extend(this, opts);
 
       if(!this.itemHeight && this.listEl) {
-        this.itemHeight = this.listEl.children[0] && parseInt(this.listEl.children[0].style.height);
+        this.itemHeight = this.listEl.children[0] && parseInt(this.listEl.children[0].style.height, 10);
       }
 
       ionic.views.ListView.__super__.initialize.call(this, opts);
@@ -3295,8 +3288,8 @@ window.ionic = {
 
         // Get the first and last elements in the list based on how many can fit
         // between the pixel range of lowWater and highWater
-        var first = parseInt(Math.abs(highWater / itemHeight));
-        var last = parseInt(Math.abs(lowWater / itemHeight));
+        var first = parseInt(Math.abs(highWater / itemHeight), 10);
+        var last = parseInt(Math.abs(lowWater / itemHeight), 10);
 
         // Get the items we need to remove
         this._virtualItemsToRemove = Array.prototype.slice.call(this.listEl.children, 0, first);
@@ -3501,7 +3494,7 @@ window.ionic = {
   ionic.views.Modal = ionic.views.View.inherit({
     initialize: function(opts) {
       opts = ionic.extend({
-        focusFirstInput: true,
+        focusFirstInput: false,
         unfocusOnHide: true
       }, opts);
 

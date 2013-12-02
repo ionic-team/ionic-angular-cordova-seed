@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/**
+/*!
  * Copyright 2013 Drifty Co.
  * http://drifty.com/
 
@@ -10,7 +10,7 @@
  * By @maxlynch, @helloimben, @adamdbradley <3
  *
  * Licensed under the MIT license. Please see LICENSE for more information.
- * 
+ *
  */
 /*!
   Ionicons, v1.3.6
@@ -1948,13 +1948,12 @@ script {
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ *  user zoom.
  */
 html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none;
   font-family: sans-serif;
   /* 1 */
@@ -1971,24 +1970,21 @@ body {
   margin: 0;
   line-height: 1; }
 
+/**
+ * Remove default outlines.
+ */
+:focus,
+a:focus,
+button:focus,
+a:active,
+a:hover {
+  outline: 0; }
+
 /* *
  * Remove tap highlight color on Safari
  */
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-/**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
-a:focus {
-  outline: thin dotted; }
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-a:active,
-a:hover {
-  outline: 0; }
 
 /* ==========================================================================
    Typography
@@ -2122,10 +2118,10 @@ select {
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
+ *  and `video` controls.
  * 2. Correct inability to style clickable `input` types in iOS.
  * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
+ *  `input` and others.
  */
 button,
 html input[type="button"],
@@ -2146,7 +2142,7 @@ html input[disabled] {
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
+ *  (include `-moz` to future-proof).
  */
 input[type="search"] {
   -webkit-box-sizing: content-box;
@@ -2210,10 +2206,18 @@ a {
 img {
   -webkit-user-drag: none; }
 
-a:focus, button:focus {
-  outline: 0; }
-
 body, .ionic-body {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  @incude text-size-adjust(none);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -2228,26 +2232,14 @@ body, .ionic-body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-drag: none;
-  -webkit-user-select: none; }
+  -webkit-user-drag: none; }
 
 .content:before,
 .content:after {
   display: block;
   overflow: hidden;
   height: 0;
-  content: "\00a0";
-  /* No-break space character */ }
-
-/* Force all relatively and absolutely positioned elements still render while scrolling
-   Note: This is a bug for "-webkit-overflow-scrolling: touch" (via ratchet) */
-.content > * {
-  -webkit-transform: translateZ(0px);
-  transform: translateZ(0px); }
+  content: "\00a0"; }
 
 .content {
   position: absolute;
@@ -2260,66 +2252,66 @@ body, .ionic-body {
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden; }
 
 /**
  * Scroll is the scroll view component available for complex and custom
  * scroll view functionality.
  */
 .scroll {
-  position: absolute;
-  z-index: 1;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  width: 100%;
-  height: 100%;
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
   -moz-text-size-adjust: none;
-  -ms-text-size-adjust: none;
-  -o-text-size-adjust: none;
-  text-size-adjust: none; }
+  text-size-adjust: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden; }
 
 .scroll-refresher {
   display: none;
   overflow: hidden;
-  height: 100px;
-  margin-top: -100px; }
+  margin-top: -100px;
+  height: 100px; }
 
 .scroll-refresher-content {
-  height: 100%;
+  position: relative;
   width: 100%;
-  text-align: center;
-  position: relative; }
+  height: 100%;
+  text-align: center; }
 
 .ionic-refresher-content {
-  height: 100%;
+  position: relative;
   width: 100%;
-  text-align: center;
-  position: relative; }
+  height: 100%;
+  text-align: center; }
 
 .ionic-refresher {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  margin-left: -5px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #4a87ee;
-  position: absolute;
-  left: 50%;
-  margin-left: -5px;
-  bottom: 25px; }
+  background-color: #4a87ee; }
 
 .scroll-refreshing {
-  -webkit-transition: height 0.1s ease-in-out; }
+  -webkit-transition: height 0.1s ease-in-out;
+  -moz-transition: height 0.1s ease-in-out;
+  transition: height 0.1s ease-in-out; }
   .scroll-refreshing .ionic-refresher {
     -webkit-animation: refresher-pulsate 1.5s linear;
+    -moz-animation: refresher-pulsate 1.5s linear;
+    animation: refresher-pulsate 1.5s linear;
     -webkit-animation-iteration-count: infinite; }
 
 @-webkit-keyframes refresher-pulsate {
@@ -2487,18 +2479,6 @@ blockquote {
     line-height: 1.42857; }
     blockquote small:before {
       content: '\2014 \00A0'; }
-  blockquote.pull-right {
-    padding-right: 15px;
-    padding-left: 0;
-    border-right: 5px solid gray;
-    border-left: 0; }
-    blockquote.pull-right p,
-    blockquote.pull-right small {
-      text-align: right; }
-    blockquote.pull-right small:before {
-      content: ''; }
-    blockquote.pull-right small:after {
-      content: '\00A0 \2014'; }
 
 q:before,
 q:after,
@@ -2562,49 +2542,83 @@ a.subdued {
   background-color: rgba(0, 0, 0, 0); }
   .action-sheet-backdrop.active {
     -webkit-animation: fadeInHalf 0.3s;
+    -moz-animation: fadeInHalf 0.3s;
     animation: fadeInHalf 0.3s;
-    -webkit-animation-fill-mode: both; }
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
   .action-sheet-backdrop.active-remove {
-    background-color: rgba(0, 0, 0, 0.5);
     -webkit-animation: fadeOutHalf 0.3s;
+    -moz-animation: fadeOutHalf 0.3s;
     animation: fadeOutHalf 0.3s;
-    -webkit-animation-fill-mode: both; }
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+    background-color: rgba(0, 0, 0, 0.5); }
 
 @-webkit-keyframes actionSheetUp {
   0% {
     -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
     opacity: 0; }
 
   100% {
     -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1; } }
 
 @-webkit-keyframes actionSheetOut {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1; }
 
   100% {
     -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
     opacity: 0; } }
 
 .action-sheet-up {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0%, 0); }
+  -webkit-transform: translate3d(0, 0%, 0);
+  -moz-transform: translate3d(0, 0%, 0);
+  transform: translate3d(0, 0%, 0);
+  opacity: 1; }
   .action-sheet-up.ng-enter, .action-sheet-up .ng-enter {
-    opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
     -webkit-animation-duration: 400ms;
+    -moz-animation-duration: 400ms;
+    animation-duration: 400ms;
     -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    opacity: 0; }
   .action-sheet-up.ng-enter-active, .action-sheet-up .ng-enter-active {
-    -webkit-animation-name: actionSheetUp; }
+    -webkit-animation-name: actionSheetUp;
+    -moz-animation-name: actionSheetUp;
+    animation-name: actionSheetUp; }
   .action-sheet-up.ng-leave, .action-sheet-up .ng-leave {
     -webkit-animation-duration: 400ms;
+    -moz-animation-duration: 400ms;
+    animation-duration: 400ms;
     -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
   .action-sheet-up.ng-leave-active, .action-sheet-up .ng-leave {
-    -webkit-animation-name: actionSheetOut; }
+    -webkit-animation-name: actionSheetOut;
+    -moz-animation-name: actionSheetOut;
+    animation-name: actionSheetOut; }
 
 .action-sheet {
   position: fixed;
@@ -2626,17 +2640,17 @@ a.subdued {
 
 .action-sheet-title {
   padding: 10px;
+  color: #666666;
   text-align: center;
-  font-size: 12px;
-  color: #666666; }
+  font-size: 12px; }
 
 .action-sheet-group {
-  background-color: #fff;
   margin-bottom: 5px;
-  border-radius: 3px 3px 3px 3px; }
+  border-radius: 3px 3px 3px 3px;
+  background-color: #fff; }
   .action-sheet-group .button {
-    border-radius: 0;
-    border-width: 1px 0px 0px 0px; }
+    border-width: 1px 0px 0px 0px;
+    border-radius: 0; }
     .action-sheet-group .button.active, .action-sheet-group .button:active {
       background-color: transparent;
       color: inherit; }
@@ -2648,17 +2662,20 @@ a.subdued {
  * --------------------------------------------------
  */
 .bar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none;
   position: absolute;
   right: 0;
   left: 0;
   z-index: 10;
-  display: -webkit-box;
-  display: box;
   box-sizing: border-box;
   padding: 5px;
   width: 100%;
@@ -2686,6 +2703,10 @@ a.subdued {
       color: #fff; }
     .bar.bar-clear .title {
       color: #fff; }
+  .bar.item-input .item-input-inset {
+    margin-top: -1px; }
+  .bar.item-input input {
+    height: 28px; }
   .bar.bar-light {
     background-color: white;
     border-color: #dddddd;
@@ -2756,15 +2777,17 @@ a.subdued {
     left: 0;
     z-index: 0;
     overflow: hidden;
-    margin: 0;
+    margin: 0 10px;
     min-width: 30px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 18px;
-    line-height: 44px; }
+    line-height: 42px; }
     .bar .title.title-left {
       text-align: left; }
+    .bar .title.title-right {
+      text-align: right; }
   .bar .title a {
     color: inherit; }
   .bar .button {
@@ -2775,11 +2798,13 @@ a.subdued {
     height: 32px;
     font-size: 12px;
     line-height: 30px; }
-    .bar .button .icon {
-      padding-left: 2px;
+    .bar .button .icon, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
       padding-right: 2px;
+      padding-left: 2px;
       font-size: 24px;
       line-height: 30px; }
+    .bar .button.button-icon .icon, .bar .button.button-icon.icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
+      line-height: 32px; }
   .bar .button-bar > .button, .bar .buttons > .button {
     min-height: 31px;
     height: 32px;
@@ -3195,7 +3220,7 @@ a.subdued {
   background-color: #fff; }
 
 .menu-content {
-  box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.2), 1px 0px 3px rgba(0, 0, 0, 0.2); }
+  box-shadow: -1px 0px 2px rgba(0, 0, 0, 0.2), 1px 0px 2px rgba(0, 0, 0, 0.2); }
 
 .menu-left {
   left: 0; }
@@ -3215,6 +3240,7 @@ a.subdued {
  */
 .modal {
   -webkit-transform: translate3d(0, 100%, 0);
+  -moz-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
   position: fixed;
   top: 0;
@@ -3238,18 +3264,22 @@ a.subdued {
   padding: 10px; }
 
 .loading-backdrop {
+  -webkit-transition: visibility 0s linear 0.3s;
+  -moz-transition: visibility 0s linear 0.3s;
+  transition: visibility 0s linear 0.3s;
   position: fixed;
   top: 0;
   left: 0;
   visibility: hidden;
   width: 100%;
-  height: 100%;
-  -webkit-transition: visibility 0s linear 0.3s; }
+  height: 100%; }
   .loading-backdrop.enabled {
     background-color: rgba(0, 0, 0, 0.7); }
   .loading-backdrop.active {
-    visibility: visible;
-    -webkit-transition-delay: 0s; }
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+    visibility: visible; }
 
 .loading {
   position: fixed;
@@ -3262,7 +3292,7 @@ a.subdued {
   text-align: center;
   text-overflow: ellipsis;
   font-size: 15px; }
-  .loading h1, .loading h2, .loading h3, .loading h4, .loading h5 {
+  .loading h1, .loading h2, .loading h3, .loading h4, .loading h5, .loading h6 {
     color: #fff; }
 
 /**
@@ -3273,6 +3303,9 @@ a.subdued {
   color: #444444;
   background-color: white;
   border-color: #dddddd;
+  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  -moz-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
   position: relative;
   z-index: 2;
   display: block;
@@ -3280,8 +3313,7 @@ a.subdued {
   padding: 15px;
   border-width: 1px;
   border-style: solid;
-  font-size: 16px;
-  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out; }
+  font-size: 16px; }
   .item h2 {
     margin: 0 0 4px 0;
     font-size: 16px; }
@@ -3419,17 +3451,19 @@ button.item.item-complex {
 
 .item-complex .item-content,
 .item-radio .item-content {
+  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  -moz-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
   /**
    * The content area of a complex list item. This area can
    * Slide left and right and be dragged to support different
    * UI interactions.
    */
   position: relative;
-  background-color: white;
   z-index: 2;
   padding: 15px 40px 15px 15px;
   border: none;
-  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out; }
+  background-color: white; }
 
 .item-text-wrap,
 .item-text-wrap h1,
@@ -3601,6 +3635,8 @@ button.item:after {
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
   position: absolute;
   top: 0;
   right: 11px;
@@ -3614,8 +3650,7 @@ button.item:after {
   font-size: 16px;
   font-family: 'Ionicons';
   line-height: 1;
-  speak: none;
-  -webkit-font-smoothing: antialiased; }
+  speak: none; }
 
 a.item-icon-right:after,
 button.item-icon-right:after,
@@ -3687,7 +3722,9 @@ button.item-button-right:after {
   font-size: 14px; }
 
 .item-sliding {
-  -webkit-transition: -webkit-transform 0.1s ease-in-out; }
+  -webkit-transition: transform 0.1s ease-in-out;
+  -moz-transition: transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out; }
 
 .item-reordering {
   position: absolute;
@@ -3701,14 +3738,16 @@ button.item-button-right:after {
  * whe the list item is in edit mode.
  */
 .item-edit {
+  -webkit-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  -moz-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
   position: absolute;
   top: 0;
   left: 8px;
   z-index: 0;
   width: 48px;
   height: 100%;
-  line-height: 100%;
-  -webkit-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out; }
+  line-height: 100%; }
   .item-edit .button {
     height: 100%; }
     .item-edit .button .icon, .item-edit .button i {
@@ -3729,16 +3768,20 @@ button.item-button-right:after {
       color: #ef4e3a;
       font-size: 24px; }
   .item-edit.ng-enter {
+    -webkit-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -moz-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
     left: -48px;
-    opacity: 0;
-    -webkit-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out; }
+    opacity: 0; }
   .item-edit.ng-enter-active {
     left: 8px;
     opacity: 1; }
   .item-edit.ng-leave {
+    -webkit-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -moz-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out;
     left: 0px;
-    opacity: 1;
-    -webkit-transition: left 0.2s ease-in-out, opacity 0.2s ease-in-out; }
+    opacity: 1; }
   .item-edit.ng-leave-active {
     left: -48px;
     opacity: 0; }
@@ -3940,24 +3983,26 @@ button.item-button-right:after {
  * --------------------------------------------------
  */
 .slide-box {
-  background-color: #000;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #000; }
 
 .slide-box-slides {
   position: relative;
   white-space: nowrap;
-  -webkit-transition: -webkit-transform 0 ease-in-out;
-  font-size: 0; }
+  font-size: 0;
+  -webkit-transition: -webkit-transform 0 ease-in-out; }
 
 .slide-box-animating {
-  -webkit-transition-duration: 0.2s; }
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s; }
 
 .slide-box-slide {
   display: inline-block;
-  vertical-align: top;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  vertical-align: top; }
   .slide-box-slide img {
     width: 100%; }
 
@@ -3968,13 +4013,15 @@ button.item-button-right:after {
   text-align: center; }
   .slide-box-pager > * {
     display: inline-block;
-    text-decoration: none;
     margin: 0px 5px;
     color: #fff;
+    text-decoration: none;
     opacity: 0.3; }
     .slide-box-pager > *.active {
+      opacity: 1;
       -webkit-transition: opacity 0.4s ease-in;
-      opacity: 1; }
+      -moz-transition: opacity 0.4s ease-in;
+      transition: opacity 0.4s ease-in; }
 
 /**
  * Split Pane
@@ -4091,13 +4138,37 @@ textarea {
     -ms-flex: 0 0 24px;
     flex: 0 0 24px;
     position: static;
-    height: auto;
     display: inline-block;
+    height: auto;
     text-align: center;
     font-size: 16px; }
   .item-input.item.active, .ionic-pseudo .item-input.item:active {
-    background-color: transparent;
-    border-color: #dddddd; }
+    border-color: #dddddd;
+    background-color: transparent; }
+
+.item-input-inset {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 220px;
+  -moz-box-flex: 1;
+  -moz-flex: 1 0 220px;
+  -ms-flex: 1 0 220px;
+  flex: 1 0 220px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding-left: 4px;
+  background: #eee; }
 
 .input-label {
   -webkit-box-flex: 1;
@@ -4112,7 +4183,7 @@ textarea {
   font-weight: bold; }
 
 .placeholder-icon {
-  color: #999; }
+  color: #aaa; }
 
 .item-stacked-label {
   display: block;
@@ -4197,6 +4268,10 @@ input[type="radio"],
 input[type="checkbox"] {
   width: auto; }
 
+select[multiple],
+select[size] {
+  height: auto; }
+
 select,
 input[type="file"] {
   line-height: 34px; }
@@ -4204,10 +4279,6 @@ input[type="file"] {
 select {
   border: 1px solid #dddddd;
   background-color: white; }
-
-select[multiple],
-select[size] {
-  height: auto; }
 
 input:-moz-placeholder,
 textarea:-moz-placeholder {
@@ -4265,6 +4336,12 @@ input[type="checkbox"][readonly] {
 
 /* the checkmark within the box */
 .checkbox input:after {
+  -webkit-transition: opacity 0.05s ease-in-out;
+  -moz-transition: opacity 0.05s ease-in-out;
+  transition: opacity 0.05s ease-in-out;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
   position: absolute;
   top: 34%;
   left: 26%;
@@ -4275,10 +4352,7 @@ input[type="checkbox"][readonly] {
   border-top: 0;
   border-right: 0;
   content: ' ';
-  opacity: 0;
-  transition: opacity .05s ease-in-out;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg); }
+  opacity: 0; }
 
 /* what the background looks like when its checked */
 .checkbox input:checked:before {
@@ -4329,6 +4403,15 @@ input[type="checkbox"][readonly] {
 
 /* the track appearance when the toggle is "off" */
 .toggle .track {
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: background-color, border;
+  -moz-transition-property: background-color, border;
+  transition-property: background-color, border;
   display: inline-block;
   box-sizing: border-box;
   width: 54px;
@@ -4337,15 +4420,13 @@ input[type="checkbox"][readonly] {
   border-radius: 20px;
   background-color: #e5e5e5;
   content: ' ';
-  cursor: pointer;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.1s;
-  transition-property: background-color, border; }
+  cursor: pointer; }
 
 /* the handle (circle) thats inside the toggle's track area */
 /* also the handle's appearance when it is "off" */
 .toggle .handle {
   -webkit-transition: 0.1s ease-in-out;
+  -moz-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;
   position: absolute;
   top: 2px;
@@ -4371,6 +4452,7 @@ input[type="checkbox"][readonly] {
 /* the handle when the toggle is "on" */
 .toggle input:checked + .track .handle {
   -webkit-transform: translate3d(22px, 0, 0);
+  -moz-transform: translate3d(22px, 0, 0);
   transform: translate3d(22px, 0, 0);
   background-color: white; }
 
@@ -4529,6 +4611,9 @@ input[type="range"] {
  * --------------------------------------------------
  */
 .button {
+  color: #444444;
+  background-color: #f8f8f8;
+  border-color: #b2b2b2;
   position: relative;
   display: inline-block;
   margin: 0;
@@ -4538,9 +4623,6 @@ input[type="range"] {
   border-width: 1px;
   border-style: solid;
   border-radius: 2px;
-  color: #444444;
-  background-color: #f8f8f8;
-  border-color: #b2b2b2;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -4554,12 +4636,19 @@ input[type="range"] {
     background-color: #e5e5e5;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.15);
     border-color: #a2a2a2; }
-  .button .icon {
+  .button .icon, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
     display: inline-block;
     padding: 0 0 1px 0;
     vertical-align: inherit;
     font-size: 24px;
     line-height: 40px; }
+  .button.icon-left:before {
+    padding-right: .2em;
+    padding-left: 0; }
+  .button.icon-right:before {
+    float: right;
+    padding-right: 0;
+    padding-left: .2em; }
   .button.button-block, .button.button-full {
     margin-top: 10px;
     margin-bottom: 10px; }
@@ -4813,7 +4902,7 @@ input[type="range"] {
   min-height: 28px;
   font-size: 12px;
   line-height: 27px; }
-  .button-small .icon {
+  .button-small .icon, .button-small.icon:before, .button-small.icon-left:before, .button-small.icon-right:before {
     font-size: 16px;
     line-height: 26px; }
 
@@ -4823,29 +4912,31 @@ input[type="range"] {
   min-height: 54px;
   font-size: 18px;
   line-height: 53px; }
-  .button-large .icon {
+  .button-large .icon, .button-large.icon:before, .button-large.icon-left:before, .button-large.icon-right:before {
+    padding-bottom: 2px;
     font-size: 32px;
-    line-height: 51px;
-    padding-bottom: 2px; }
+    line-height: 51px; }
 
 .button-icon {
   -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
   transition: opacity 0.1s;
   padding: 0 6px;
   min-width: initial;
-  background: none;
   border-color: transparent;
+  background: none;
   background: none; }
   .button-icon.button:active, .button-icon.button.active {
-    background: none;
     border-color: transparent;
-    opacity: 0.3;
-    box-shadow: none; }
-  .button-icon .icon {
+    background: none;
+    box-shadow: none;
+    opacity: 0.3; }
+  .button-icon .icon, .button-icon.icon:before {
     font-size: 32px; }
 
 .button-clear {
   -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
   transition: opacity 0.1s;
   padding: 0 6px;
   max-height: 42px;
@@ -4865,6 +4956,7 @@ input[type="range"] {
 
 .button-outline {
   -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
   transition: opacity 0.1s;
   background: none;
   box-shadow: none; }
@@ -4949,254 +5041,101 @@ a.button {
     border-radius: 0px 2px 2px 0px; }
 
 /**
- * Animations
+ * Keyframes
  * --------------------------------------------------
- * The animations in this file are "simple" - not too complex
- * and pretty easy on performance. They can be overidden
- * and enhanced easily.
  */
-.noop-animation > .ng-enter, .noop-animation.ng-enter, .noop-animation > .ng-leave, .noop-animation.ng-leave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms; }
-
-.slide-left-right > .ng-enter, .slide-left-right.ng-enter, .slide-left-right > .ng-leave, .slide-left-right.ng-leave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms; }
-.slide-left-right > .ng-enter, .slide-left-right.ng-enter {
-  -webkit-transform: translate3d(100%, 0, 0); }
-.slide-left-right > .ng-enter.ng-enter-active, .slide-left-right.ng-enter.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0); }
-.slide-left-right > .ng-leave.ng-leave-active, .slide-left-right.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(-100%, 0, 0); }
-.slide-left-right.reverse > .ng-enter, .slide-left-right.reverse.ng-enter, .slide-left-right.reverse > .ng-leave, .slide-left-right.reverse.ng-leave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms; }
-.slide-left-right.reverse > .ng-enter, .slide-left-right.reverse.ng-enter {
-  -webkit-transform: translate3d(-100%, 0, 0); }
-.slide-left-right.reverse > .ng-enter.ng-enter-active, .slide-left-right.reverse.ng-enter.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0); }
-.slide-left-right.reverse > .ng-leave.ng-leave-active, .slide-left-right.reverse.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(100%, 0, 0); }
-
-.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter, .slide-left-right-ios7 > .ng-leave, .slide-left-right-ios7.ng-leave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: all 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
-  transition: all 250ms;
-  transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.2), 1px 0px 3px rgba(0, 0, 0, 0.2); }
-.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter {
-  -webkit-transform: translate3d(100%, 0, 0); }
-.slide-left-right-ios7 > .ng-enter.ng-enter-active, .slide-left-right-ios7.ng-enter.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0); }
-.slide-left-right-ios7 > .ng-leave.ng-leave-active, .slide-left-right-ios7.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(-20%, 0, 0); }
-.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter, .slide-left-right-ios7.reverse > .ng-leave, .slide-left-right-ios7.reverse.ng-leave {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: all 250ms;
-  -webkit-transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
-  transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
-.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter {
-  -webkit-transform: translate3d(-20%, 0, 0); }
-.slide-left-right-ios7.reverse > .ng-enter.ng-enter-active, .slide-left-right-ios7.reverse.ng-enter.ng-enter-active {
-  -webkit-transform: translate3d(0, 0, 0); }
-.slide-left-right-ios7.reverse > .ng-leave.ng-leave-active, .slide-left-right-ios7.reverse.ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(100%, 0, 0); }
-
-@-webkit-keyframes slideInLeft {
-  0% {
-    -webkit-transform: translate3d(100%, 0, 0); }
-
-  100% {
-    -webkit-transform: translate3d(0, 0, 0); } }
-
-@-webkit-keyframes slideOutLeft {
-  0% {
-    -webkit-transform: translate3d(0px, 0, 0); }
-
-  100% {
-    -webkit-transform: translate3d(-100%, 0, 0); } }
-
-@-webkit-keyframes slideInRight {
-  0% {
+@-webkit-keyframes slideInFromLeft {
+  from {
     -webkit-transform: translate3d(-100%, 0, 0); }
 
-  100% {
+  to {
     -webkit-transform: translate3d(0, 0, 0); } }
 
-@-webkit-keyframes slideOutRight {
-  0% {
+@-moz-keyframes slideInFromLeft {
+  from {
+    -moz-transform: translateX(-100%); }
+
+  to {
+    -moz-transform: translateX(0); } }
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%); }
+
+  to {
+    transform: translateX(0); } }
+
+@-webkit-keyframes slideInFromRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0); }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0); } }
+
+@-moz-keyframes slideInFromRight {
+  from {
+    -moz-transform: translateX(100%); }
+
+  to {
+    -moz-transform: translateX(0); } }
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%); }
+
+  to {
+    transform: translateX(0); } }
+
+@-webkit-keyframes slideOutToleft {
+  from {
     -webkit-transform: translate3d(0, 0, 0); }
 
-  100% {
+  to {
+    -webkit-transform: translate3d(-100%, 0, 0); } }
+
+@-moz-keyframes slideOutToleft {
+  from {
+    -moz-transform: translateX(0); }
+
+  to {
+    -moz-transform: translateX(-100%); } }
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0); }
+
+  to {
+    transform: translateX(-100%); } }
+
+@-webkit-keyframes slideOutToRight {
+  from {
+    -webkit-transform: translate3d(0, 0, 0); }
+
+  to {
     -webkit-transform: translate3d(100%, 0, 0); } }
 
-.slide-in-left {
-  -webkit-transform: translate3d(0%, 0, 0); }
-  .slide-in-left.ng-enter, .slide-in-left > .ng-enter {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideInLeft; }
-  .slide-in-left.ng-leave, .slide-in-left > .ng-leave {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideOutLeft; }
+@-moz-keyframes slideOutToRight {
+  from {
+    -moz-transform: translateX(0); }
 
-.slide-in-left-add {
-  -webkit-transform: translate3d(100%, 0, 0);
-  -webkit-animation-duration: 250ms;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-timing-function: ease-in-out; }
+  to {
+    -moz-transform: translateX(100%); } }
 
-.slide-in-left-add-active {
-  -webkit-animation-name: slideInLeft; }
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0); }
 
-.slide-out-left {
-  -webkit-transform: translate3d(-100%, 0, 0); }
-  .slide-out-left.ng-enter, .slide-out-left > .ng-enter {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideOutLeft; }
-  .slide-out-left.ng-leave, .slide-out-left > .ng-leave {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideOutLeft; }
-
-.slide-out-left-add {
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-animation-duration: 250ms;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-timing-function: ease-in-out; }
-
-.slide-out-left-add-active {
-  -webkit-animation-name: slideOutLeft; }
-
-.slide-in-right {
-  -webkit-transform: translate3d(0%, 0, 0); }
-  .slide-in-right.ng-enter, .slide-in-right > .ng-enter {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideInRight; }
-  .slide-in-right.ng-leave, .slide-in-right > .ng-leave {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideInRight; }
-
-.slide-in-right-add {
-  -webkit-transform: translate3d(-100%, 0, 0);
-  -webkit-animation-duration: 250ms;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-timing-function: ease-in-out; }
-
-.slide-in-right-add-active {
-  -webkit-animation-name: slideInRight; }
-
-.slide-out-right {
-  -webkit-transform: translate3d(100%, 0, 0); }
-  .slide-out-right.ng-enter, .slide-out-right > .ng-enter {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideOutRight; }
-  .slide-out-right.ng-leave, .slide-out-right > .ng-leave {
-    -webkit-animation-duration: 250ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-name: slideOutRight; }
-
-.slide-out-right-add {
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-animation-duration: 250ms;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-timing-function: ease-in-out; }
-
-.slide-out-right-add-active {
-  -webkit-animation-name: slideOutRight; }
-
-@-webkit-keyframes slideInUp {
-  0% {
-    -webkit-transform: translate3d(0, 100%, 0);
-    opacity: 0; }
-
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    opacity: 1; } }
-
-@-webkit-keyframes slideOutUp {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    opacity: 1; }
-
-  100% {
-    -webkit-transform: translate3d(0, 100%, 0);
-    opacity: 0; } }
-
-.slide-in-up {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0%, 0); }
-  .slide-in-up.ng-enter, .slide-in-up .ng-enter {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    -webkit-animation-duration: 400ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
-  .slide-in-up.ng-enter-active, .slide-in-up .ng-enter-active {
-    -webkit-animation-name: slideInUp; }
-  .slide-in-up.ng-leave, .slide-in-up .ng-leave {
-    -webkit-animation-duration: 400ms;
-    -webkit-animation-fill-mode: both;
-    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
-  .slide-in-up.ng-leave-active, .slide-in-up .ng-leave {
-    -webkit-animation-name: slideOutUp; }
-
-.slide-in-up-add {
-  -webkit-animation-duration: 400ms;
-  -webkit-animation-fill-mode: both;
-  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
-
-.slide-in-up-add-active {
-  -webkit-animation-name: slideInUp; }
-
-.slide-in-up-remove {
-  -webkit-animation-duration: 400ms;
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1); }
-
-.slide-in-up-remove-active {
-  -webkit-animation-name: slideOutUp; }
+  to {
+    transform: translateX(100%); } }
 
 @-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 0; } }
+
+@-moz-keyframes fadeOut {
   from {
     opacity: 1; }
 
@@ -5217,6 +5156,13 @@ a.button {
   to {
     opacity: 1; } }
 
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
 @keyframes fadeIn {
   from {
     opacity: 0; }
@@ -5224,67 +5170,491 @@ a.button {
   to {
     opacity: 1; } }
 
-.fade-in {
-  -webkit-animation: fadeOut 0.3s;
-  animation: fadeOut 0.3s; }
-  .fade-in.active {
-    -webkit-animation: fadeIn 0.3s;
-    animation: fadeIn 0.3s; }
-
-.fade-in-not-out.ng-enter, .fade-in-not-out .ng-enter {
-  position: relative;
-  -webkit-animation: fadeIn 0.3s;
-  animation: fadeIn 0.3s; }
-.fade-in-not-out.ng-leave, .fade-in-not-out .ng-leave {
-  display: none; }
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
 
 @-moz-keyframes spin {
   100% {
     -moz-transform: rotate(360deg); } }
 
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg); } }
-
 @keyframes spin {
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+/**
+ * Animations
+ * --------------------------------------------------
+ * The animations in this file are "simple" - not too complex
+ * and pretty easy on performance. They can be overidden
+ * and enhanced easily.
+ */
+.noop-animation > .ng-enter, .noop-animation.ng-enter, .noop-animation > .ng-leave, .noop-animation.ng-leave {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.ng-animate .pane {
+  position: absolute; }
+
+/**
+ * Slide Left-Right
+ * --------------------------------------------------
+ * NEW content slides IN from the RIGHT, OLD slides OUT to the LEFT
+ * Reverse: NEW content slides IN from the LEFT, OLD slides OUT to the RIGHT
+ */
+.slide-left-right > .ng-enter, .slide-left-right.ng-enter,
+.slide-left-right > .ng-leave, .slide-left-right.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+.slide-left-right > .ng-enter, .slide-left-right.ng-enter {
+  /* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0); }
+.slide-left-right > .ng-enter.ng-enter-active, .slide-left-right.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the RIGHT */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.slide-left-right > .ng-leave.ng-leave-active, .slide-left-right.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the LEFT */
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0); }
+.slide-left-right.reverse > .ng-enter, .slide-left-right.reverse.ng-enter, .slide-left-right.reverse > .ng-leave, .slide-left-right.reverse.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+.slide-left-right.reverse > .ng-enter, .slide-left-right.reverse.ng-enter {
+  /* NEW content placed far LEFT BEFORE it slides IN from the LEFT */
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0); }
+.slide-left-right.reverse > .ng-enter.ng-enter-active, .slide-left-right.reverse.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the LEFT */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.slide-left-right.reverse > .ng-leave.ng-leave-active, .slide-left-right.reverse.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the RIGHT */
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0); }
+
+/**
+ * iOS7 style slide left to right 
+ * --------------------------------------------------
+ */
+.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter,
+.slide-left-right-ios7 > .ng-leave, .slide-left-right-ios7.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; }
+.slide-left-right-ios7 > .ng-enter, .slide-left-right-ios7.ng-enter {
+  /* NEW content placed far RIGHT BEFORE it slides IN from the RIGHT */
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0); }
+.slide-left-right-ios7 > .ng-enter.ng-enter-active, .slide-left-right-ios7.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the RIGHT */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.slide-left-right-ios7 > .ng-leave.ng-leave-active, .slide-left-right-ios7.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the LEFT */
+  -webkit-transform: translate3d(-15%, 0, 0);
+  -moz-transform: translate3d(-15%, 0, 0);
+  transform: translate3d(-15%, 0, 0); }
+.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter, .slide-left-right-ios7.reverse > .ng-leave, .slide-left-right-ios7.reverse.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  left: -1px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; }
+.slide-left-right-ios7.reverse > .ng-enter, .slide-left-right-ios7.reverse.ng-enter {
+  /* NEW content placed far LEFT BEFORE it slides IN from the LEFT */
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0); }
+.slide-left-right-ios7.reverse > .ng-enter.ng-enter-active, .slide-left-right-ios7.reverse.ng-enter.ng-enter-active {
+  /* NEW content ACTIVELY sliding IN from the LEFT */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+.slide-left-right-ios7.reverse > .ng-leave.ng-leave-active, .slide-left-right-ios7.reverse.ng-leave.ng-leave-active {
+  /* OLD content ACTIVELY sliding OUT to the RIGHT */
+  -webkit-transform: translate3d(15%, 0, 0);
+  -moz-transform: translate3d(15%, 0, 0);
+  transform: translate3d(15%, 0, 0); }
+
+.slide-in-left {
+  -webkit-transform: translate3d(0%, 0, 0);
+  -moz-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0); }
+  .slide-in-left.ng-enter, .slide-in-left > .ng-enter {
+    -webkit-animation-name: slideInFromLeft;
+    -moz-animation-name: slideInFromLeft;
+    animation-name: slideInFromLeft;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .slide-in-left.ng-leave, .slide-in-left > .ng-leave {
+    -webkit-animation-name: slideOutToLeft;
+    -moz-animation-name: slideOutToLeft;
+    animation-name: slideOutToLeft;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+
+.slide-in-left-add {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.slide-in-left-add-active {
+  -webkit-animation-name: slideInFromLeft;
+  -moz-animation-name: slideInFromLeft;
+  animation-name: slideInFromLeft; }
+
+.slide-out-left {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0); }
+  .slide-out-left.ng-enter, .slide-out-left > .ng-enter {
+    -webkit-animation-name: slideOutToLeft;
+    -moz-animation-name: slideOutToLeft;
+    animation-name: slideOutToLeft;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .slide-out-left.ng-leave, .slide-out-left > .ng-leave {
+    -webkit-animation-name: slideOutToLeft;
+    -moz-animation-name: slideOutToLeft;
+    animation-name: slideOutToLeft;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+
+.slide-out-left-add {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.slide-out-left-add-active {
+  -webkit-animation-name: slideOutToLeft;
+  -moz-animation-name: slideOutToLeft;
+  animation-name: slideOutToLeft; }
+
+.slide-in-right {
+  -webkit-transform: translate3d(0%, 0, 0);
+  -moz-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0); }
+  .slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+    -webkit-animation-name: slideInFromRight;
+    -moz-animation-name: slideInFromRight;
+    animation-name: slideInFromRight;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+    -webkit-animation-name: slideInFromRight;
+    -moz-animation-name: slideInFromRight;
+    animation-name: slideInFromRight;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+
+.slide-in-right-add {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -moz-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.slide-in-right-add-active {
+  -webkit-animation-name: slideInFromRight;
+  -moz-animation-name: slideInFromRight;
+  animation-name: slideInFromRight; }
+
+.slide-out-right {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0); }
+  .slide-out-right.ng-enter, .slide-out-right > .ng-enter {
+    -webkit-animation-name: slideOutToRight;
+    -moz-animation-name: slideOutToRight;
+    animation-name: slideOutToRight;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .slide-out-right.ng-leave, .slide-out-right > .ng-leave {
+    -webkit-animation-name: slideOutToRight;
+    -moz-animation-name: slideOutToRight;
+    animation-name: slideOutToRight;
+    -webkit-animation-duration: 250ms;
+    -moz-animation-duration: 250ms;
+    animation-duration: 250ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+
+.slide-out-right-add {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation-duration: 250ms;
+  -moz-animation-duration: 250ms;
+  animation-duration: 250ms;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.slide-out-right-add-active {
+  -webkit-animation-name: slideOutToRight;
+  -moz-animation-name: slideOutToRight;
+  animation-name: slideOutToRight; }
+
+.slide-in-up {
+  -webkit-transform: translate3d(0, 0%, 0);
+  -moz-transform: translate3d(0, 0%, 0);
+  transform: translate3d(0, 0%, 0);
+  opacity: 1; }
+  .slide-in-up.ng-enter, .slide-in-up .ng-enter {
+    -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    -webkit-animation-duration: 400ms;
+    -moz-animation-duration: 400ms;
+    animation-duration: 400ms;
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+    opacity: 0; }
+  .slide-in-up.ng-enter-active, .slide-in-up .ng-enter-active {
+    -webkit-animation-name: slideInUp;
+    -moz-animation-name: slideInUp;
+    animation-name: slideInUp; }
+  .slide-in-up.ng-leave, .slide-in-up .ng-leave {
+    -webkit-animation-duration: 400ms;
+    -moz-animation-duration: 400ms;
+    animation-duration: 400ms;
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .slide-in-up.ng-leave-active, .slide-in-up .ng-leave {
+    -webkit-animation-name: slideOutUp;
+    -moz-animation-name: slideOutUp;
+    animation-name: slideOutUp; }
+
+.slide-in-up-add {
+  -webkit-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.slide-in-up-add-active {
+  -webkit-animation-name: slideInUp;
+  -moz-animation-name: slideInUp;
+  animation-name: slideInUp; }
+
+.slide-in-up-remove {
+  -webkit-animation-duration: 400ms;
+  -moz-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
+
+.slide-in-up-remove-active {
+  -webkit-animation-name: slideOutUp;
+  -moz-animation-name: slideOutUp;
+  animation-name: slideOutUp; }
+
+.fade-in {
+  -webkit-animation: fadeOut 0.3s;
+  -moz-animation: fadeOut 0.3s;
+  animation: fadeOut 0.3s; }
+  .fade-in.active {
+    -webkit-animation: fadeIn 0.3s;
+    -moz-animation: fadeIn 0.3s;
+    animation: fadeIn 0.3s; }
+
+.fade-in-not-out.ng-enter, .fade-in-not-out .ng-enter {
+  -webkit-animation: fadeIn 0.3s;
+  -moz-animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s;
+  position: relative; }
+.fade-in-not-out.ng-leave, .fade-in-not-out .ng-leave {
+  display: none; }
 
 /**
  * Some component specific animations
  */
-.nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter, .nav-title-slide-ios7 > .ng-leave, .nav-title-slide-ios7.ng-leave {
+.nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter,
+.nav-title-slide-ios7 > .ng-leave, .nav-title-slide-ios7.ng-leave {
   -webkit-transition: all 350ms;
-  -webkit-transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-transition: all 350ms;
   transition: all 350ms;
-  transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
   opacity: 1; }
 .nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter {
-  opacity: 0;
-  -webkit-transform: translate3d(30%, 0, 0); }
+  -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
+  opacity: 0; }
 .nav-title-slide-ios7 > .ng-enter.ng-enter-active, .nav-title-slide-ios7.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1; }
 .nav-title-slide-ios7 > .ng-leave.ng-leave-active, .nav-title-slide-ios7.ng-leave.ng-leave-active {
-  opacity: 0;
-  -webkit-transform: translate3d(-30%, 0, 0); }
+  -webkit-transform: translate3d(-30%, 0, 0);
+  -moz-transform: translate3d(-30%, 0, 0);
+  transform: translate3d(-30%, 0, 0);
+  opacity: 0; }
 
-.reverse .nav-title-slide-ios7 > .ng-enter, .reverse .nav-title-slide-ios7.ng-enter, .reverse .nav-title-slide-ios7 > .ng-leave, .reverse .nav-title-slide-ios7.ng-leave {
+.reverse .nav-title-slide-ios7 > .ng-enter, .reverse .nav-title-slide-ios7.ng-enter,
+.reverse .nav-title-slide-ios7 > .ng-leave, .reverse .nav-title-slide-ios7.ng-leave {
   -webkit-transition: all 350ms;
-  -webkit-transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -moz-transition: all 350ms;
   transition: all 350ms;
-  transition-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
   opacity: 1; }
 .reverse .nav-title-slide-ios7 > .ng-enter, .reverse .nav-title-slide-ios7.ng-enter {
-  opacity: 0;
-  -webkit-transform: translate3d(-30%, 0, 0); }
+  -webkit-transform: translate3d(-30%, 0, 0);
+  -moz-transform: translate3d(-30%, 0, 0);
+  transform: translate3d(-30%, 0, 0);
+  opacity: 0; }
 .reverse .nav-title-slide-ios7 > .ng-enter.ng-enter-active, .reverse .nav-title-slide-ios7.ng-enter.ng-enter-active {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0); }
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1; }
 .reverse .nav-title-slide-ios7 > .ng-leave.ng-leave-active, .reverse .nav-title-slide-ios7.ng-leave.ng-leave-active {
-  opacity: 0;
-  -webkit-transform: translate3d(30%, 0, 0); }
+  -webkit-transform: translate3d(30%, 0, 0);
+  -moz-transform: translate3d(30%, 0, 0);
+  transform: translate3d(30%, 0, 0);
+  opacity: 0; }
 
 /**
  * Grid
@@ -5485,6 +5855,9 @@ a.button {
 
 .show {
   display: block; }
+
+.invisible {
+  visibility: hidden; }
 
 .inline {
   display: inline-block; }
