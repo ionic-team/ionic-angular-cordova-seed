@@ -2625,7 +2625,7 @@ var Scroller;
     	Math.min(this.__container.clientWidth, this.__container.parentElement.clientWidth), 
     	Math.min(this.__container.clientHeight, this.__container.parentElement.clientHeight), 
     	this.__content.offsetWidth, 
-    	this.__content.offsetHeight-20);
+    	this.__content.offsetHeight+20);
   },
   /*
   ---------------------------------------------------------------------------
@@ -5467,6 +5467,10 @@ ionic.controllers.NavController = ionic.controllers.ViewController.inherit({
         return amount / this.left.width;
       }
       return amount / this.right.width;
+    },
+
+    isOpen: function() {
+      return this.getOpenRatio() == 1;
     },
 
     /**
