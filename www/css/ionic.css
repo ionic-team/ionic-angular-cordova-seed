@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Copyright 2013 Drifty Co.
  * http://drifty.com/
@@ -2247,14 +2246,16 @@ body, .ionic-body {
   height: 100%; }
 
 .scroll-content {
-  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  position: absolute;
   overflow: hidden;
   -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden; }
+  -webkit-backface-visibility: hidden;
+  margin-top: -1px;
+  width: auto; }
 
 /**
  * Scroll is the scroll view component available for complex and custom
@@ -2269,18 +2270,25 @@ body, .ionic-body {
   -webkit-text-size-adjust: none;
   -moz-text-size-adjust: none;
   text-size-adjust: none;
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  transform-origin: left top;
   -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden; }
 
 .scroll-refresher {
-  display: none;
   overflow: hidden;
-  margin-top: -100px;
-  height: 100px; }
+  margin-top: -60px;
+  height: 60px;
+  position: relative; }
+  .scroll-refresher .icon-refreshing {
+    display: none;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    animation-duration: 1.5s; }
 
 .scroll-refresher-content {
   position: relative;
@@ -2289,40 +2297,57 @@ body, .ionic-body {
   text-align: center; }
 
 .ionic-refresher-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center; }
-
-.ionic-refresher {
   position: absolute;
-  bottom: 25px;
-  left: 50%;
-  margin-left: -5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #4a87ee; }
+  left: 0;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: #666666;
+  -webkit-animation-duration: 200ms;
+  -moz-animation-duration: 200ms;
+  animation-duration: 200ms;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both; }
 
-.scroll-refreshing {
-  -webkit-transition: height 0.1s ease-in-out;
-  -moz-transition: height 0.1s ease-in-out;
-  transition: height 0.1s ease-in-out; }
-  .scroll-refreshing .ionic-refresher {
-    -webkit-animation: refresher-pulsate 1.5s linear;
-    -moz-animation: refresher-pulsate 1.5s linear;
-    animation: refresher-pulsate 1.5s linear;
-    -webkit-animation-iteration-count: infinite; }
-
-@-webkit-keyframes refresher-pulsate {
+@keyframes refresh-spin {
   0% {
-    -webkit-transform: scale(2, 2); }
-
-  50% {
-    -webkit-transform: scale(1.5, 1.5); }
+    transform: rotate(0); }
 
   100% {
-    -webkit-transform: scale(2, 2); } }
+    transform: rotate(-180deg); } }
+
+@-webkit-keyframes refresh-spin {
+  0% {
+    -webkit-transform: rotate(0); }
+
+  100% {
+    -webkit-transform: rotate(-180deg); } }
+
+.scroll-refresher.active .icon-pulling {
+  display: block; }
+.scroll-refresher.active .icon-refreshing {
+  display: none; }
+.scroll-refresher.active.refreshing .icon-pulling {
+  display: none; }
+.scroll-refresher.active.refreshing .icon-refreshing {
+  display: block; }
+.scroll-refresher.active .ionic-refresher-content {
+  -webkit-animation-name: refresh-spin;
+  -moz-animation-name: refresh-spin;
+  animation-name: refresh-spin; }
+
+.overflow-scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+  .overflow-scroll .scroll {
+    position: static;
+    height: 100%; }
 
 .overflow-scroll {
   overflow-x: hidden;
@@ -2342,10 +2367,15 @@ body, .ionic-body {
   bottom: 44px; }
 
 .has-tabs {
-  bottom: 44px; }
+  bottom: 49px; }
 
 .pane {
-  position: fixed;
+  position: fixed; }
+
+.view {
+  position: absolute; }
+
+.pane, .view {
   top: 0;
   right: 0;
   bottom: 0;
@@ -2703,10 +2733,11 @@ a.subdued {
       color: #fff; }
     .bar.bar-clear .title {
       color: #fff; }
-  .bar.item-input .item-input-inset {
+  .bar.item-input-inset .item-input-wrapper {
     margin-top: -1px; }
-  .bar.item-input input {
-    height: 28px; }
+    .bar.item-input-inset .item-input-wrapper input {
+      padding-left: 8px;
+      height: 28px; }
   .bar.bar-light {
     background-color: white;
     border-color: #dddddd;
@@ -2805,6 +2836,10 @@ a.subdued {
       line-height: 30px; }
     .bar .button.button-icon .icon, .bar .button.button-icon.icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
       line-height: 32px; }
+    .bar .button.button-clear {
+      font-size: 18px;
+      padding-right: 2px;
+      padding-left: 2px; }
   .bar .button-bar > .button, .bar .buttons > .button {
     min-height: 31px;
     height: 32px;
@@ -4130,7 +4165,7 @@ textarea {
     appearance: none;
     margin: 0;
     background-color: transparent; }
-  .item-input .icon {
+  .item-input .button .icon {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 24px;
     -moz-box-flex: 0;
@@ -4153,12 +4188,28 @@ textarea {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 10px; }
+
+.item-input-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-flex: 1;
-  -webkit-flex: 1 0 220px;
+  -webkit-flex: 1 0;
   -moz-box-flex: 1;
-  -moz-flex: 1 0 220px;
-  -ms-flex: 1 0 220px;
-  flex: 1 0 220px;
+  -moz-flex: 1 0;
+  -ms-flex: 1 0;
+  flex: 1 0;
   -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
@@ -4167,8 +4218,18 @@ textarea {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  padding-left: 4px;
+  padding-right: 8px;
+  padding-left: 8px;
   background: #eee; }
+
+.item-input-inset .item-input-wrapper input {
+  padding-left: 4px;
+  height: 29px;
+  background: inherit;
+  line-height: 18px; }
+
+.item-input-wrapper ~ .button {
+  margin-left: 10px; }
 
 .input-label {
   -webkit-box-flex: 1;
