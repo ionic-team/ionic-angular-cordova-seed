@@ -2,10 +2,10 @@
 /*!
  * Copyright 2013 Drifty Co.
  * http://drifty.com/
-
- * Ionic - a powerful HTML5 mobile app framework.
- * http://ionicframework.com/
  *
+ * Ionic, v0.9.14
+ * A powerful HTML5 mobile app framework.
+ * http://ionicframework.com/
  *
  * By @maxlynch, @helloimben, @adamdbradley <3
  *
@@ -13,15 +13,15 @@
  *
  */
 /*!
-  Ionicons, v1.3.6
+  Ionicons, v1.4.0
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
   https://twitter.com/helloimben  https://twitter.com/ionicframework
   MIT License: https://github.com/driftyco/ionicons
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../fonts/ionicons.eot?v=1.3.6");
-  src: url("../fonts/ionicons.eot?v=1.3.6#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.3.6") format("truetype"), url("../fonts/ionicons.woff?v=1.3.6") format("woff"), url("../fonts/ionicons.svg?v=1.3.6#Ionicons") format("svg");
+  src: url("../fonts/ionicons.eot?v=1.4.0");
+  src: url("../fonts/ionicons.eot?v=1.4.0#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.4.0") format("truetype"), url("../fonts/ionicons.woff?v=1.4.0") format("woff"), url("../fonts/ionicons.svg?v=1.4.0#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -34,6 +34,70 @@
 .ion-ios7-reloading, .ionicons,
 .ion-alert,
 .ion-alert-circled,
+.ion-android-add,
+.ion-android-add-contact,
+.ion-android-alarm,
+.ion-android-archive,
+.ion-android-arrow-back,
+.ion-android-arrow-down-left,
+.ion-android-arrow-down-right,
+.ion-android-arrow-up-left,
+.ion-android-arrow-up-right,
+.ion-android-battery,
+.ion-android-book,
+.ion-android-calendar,
+.ion-android-call,
+.ion-android-camera,
+.ion-android-chat,
+.ion-android-checkmark,
+.ion-android-clock,
+.ion-android-close,
+.ion-android-contact,
+.ion-android-contacts,
+.ion-android-data,
+.ion-android-developer,
+.ion-android-display,
+.ion-android-download,
+.ion-android-dropdown,
+.ion-android-earth,
+.ion-android-folder,
+.ion-android-forums,
+.ion-android-friends,
+.ion-android-hand,
+.ion-android-image,
+.ion-android-inbox,
+.ion-android-information,
+.ion-android-keypad,
+.ion-android-lightbulb,
+.ion-android-locate,
+.ion-android-location,
+.ion-android-mail,
+.ion-android-microphone,
+.ion-android-mixer,
+.ion-android-more,
+.ion-android-note,
+.ion-android-playstore,
+.ion-android-printer,
+.ion-android-promotion,
+.ion-android-reminder,
+.ion-android-remove,
+.ion-android-search,
+.ion-android-send,
+.ion-android-settings,
+.ion-android-share,
+.ion-android-social,
+.ion-android-social-user,
+.ion-android-sort,
+.ion-android-star,
+.ion-android-stopwatch,
+.ion-android-storage,
+.ion-android-system-back,
+.ion-android-system-home,
+.ion-android-system-windows,
+.ion-android-timer,
+.ion-android-trash,
+.ion-android-volume,
+.ion-android-wifi,
 .ion-archive,
 .ion-arrow-down-a,
 .ion-arrow-down-b,
@@ -70,6 +134,7 @@
 .ion-bluetooth,
 .ion-bookmark,
 .ion-briefcase,
+.ion-bug,
 .ion-calculator,
 .ion-calendar,
 .ion-camera,
@@ -106,10 +171,12 @@
 .ion-document-text,
 .ion-drag,
 .ion-earth,
+.ion-edit,
 .ion-egg,
 .ion-eject,
 .ion-email,
 .ion-eye,
+.ion-eye-disabled,
 .ion-female,
 .ion-filing,
 .ion-film-marker,
@@ -119,6 +186,7 @@
 .ion-flask,
 .ion-folder,
 .ion-fork,
+.ion-fork-repo,
 .ion-forward,
 .ion-game-controller-a,
 .ion-game-controller-b,
@@ -197,6 +265,8 @@
 .ion-ios7-cloud-upload,
 .ion-ios7-cloud-upload-outline,
 .ion-ios7-cloudy,
+.ion-ios7-cloudy-night,
+.ion-ios7-cloudy-night-outline,
 .ion-ios7-cloudy-outline,
 .ion-ios7-cog,
 .ion-ios7-cog-outline,
@@ -307,6 +377,7 @@
 .ion-ios7-skipbackward-outline,
 .ion-ios7-skipforward,
 .ion-ios7-skipforward-outline,
+.ion-ios7-snowy,
 .ion-ios7-speedometer,
 .ion-ios7-speedometer-outline,
 .ion-ios7-star,
@@ -370,13 +441,16 @@
 .ion-minus,
 .ion-minus-circled,
 .ion-minus-round,
+.ion-model-s,
 .ion-monitor,
 .ion-more,
 .ion-music-note,
 .ion-navicon,
 .ion-navicon-round,
 .ion-navigate,
+.ion-no-smoking,
 .ion-nuclear,
+.ion-paper-airplane,
 .ion-paperclip,
 .ion-pause,
 .ion-person,
@@ -388,6 +462,7 @@
 .ion-pizza,
 .ion-plane,
 .ion-play,
+.ion-playstation,
 .ion-plus,
 .ion-plus-circled,
 .ion-plus-round,
@@ -423,6 +498,7 @@
 .ion-social-dropbox-outline,
 .ion-social-facebook,
 .ion-social-facebook-outline,
+.ion-social-freebsd-devil,
 .ion-social-github,
 .ion-social-github-outline,
 .ion-social-googleplus,
@@ -441,6 +517,7 @@
 .ion-social-skype-outline,
 .ion-social-tumblr,
 .ion-social-tumblr-outline,
+.ion-social-tux,
 .ion-social-twitter,
 .ion-social-twitter-outline,
 .ion-social-vimeo,
@@ -458,6 +535,7 @@
 .ion-spoon,
 .ion-star,
 .ion-stats-bars,
+.ion-steam,
 .ion-stop,
 .ion-thermometer,
 .ion-thumbsdown,
@@ -477,7 +555,8 @@
 .ion-wifi,
 .ion-wineglass,
 .ion-woman,
-.ion-wrench {
+.ion-wrench,
+.ion-xbox {
   display: inline-block;
   font-family: "Ionicons";
   speak: none;
@@ -547,6 +626,198 @@
 
 .ion-alert-circled:before {
   content: "\f100"; }
+
+.ion-android-add:before {
+  content: "\f2c7"; }
+
+.ion-android-add-contact:before {
+  content: "\f2c6"; }
+
+.ion-android-alarm:before {
+  content: "\f2c8"; }
+
+.ion-android-archive:before {
+  content: "\f2c9"; }
+
+.ion-android-arrow-back:before {
+  content: "\f2ca"; }
+
+.ion-android-arrow-down-left:before {
+  content: "\f2cb"; }
+
+.ion-android-arrow-down-right:before {
+  content: "\f2cc"; }
+
+.ion-android-arrow-up-left:before {
+  content: "\f2cd"; }
+
+.ion-android-arrow-up-right:before {
+  content: "\f2ce"; }
+
+.ion-android-battery:before {
+  content: "\f2cf"; }
+
+.ion-android-book:before {
+  content: "\f2d0"; }
+
+.ion-android-calendar:before {
+  content: "\f2d1"; }
+
+.ion-android-call:before {
+  content: "\f2d2"; }
+
+.ion-android-camera:before {
+  content: "\f2d3"; }
+
+.ion-android-chat:before {
+  content: "\f2d4"; }
+
+.ion-android-checkmark:before {
+  content: "\f2d5"; }
+
+.ion-android-clock:before {
+  content: "\f2d6"; }
+
+.ion-android-close:before {
+  content: "\f2d7"; }
+
+.ion-android-contact:before {
+  content: "\f2d8"; }
+
+.ion-android-contacts:before {
+  content: "\f2d9"; }
+
+.ion-android-data:before {
+  content: "\f2da"; }
+
+.ion-android-developer:before {
+  content: "\f2db"; }
+
+.ion-android-display:before {
+  content: "\f2dc"; }
+
+.ion-android-download:before {
+  content: "\f2dd"; }
+
+.ion-android-dropdown:before {
+  content: "\f2de"; }
+
+.ion-android-earth:before {
+  content: "\f2df"; }
+
+.ion-android-folder:before {
+  content: "\f2e0"; }
+
+.ion-android-forums:before {
+  content: "\f2e1"; }
+
+.ion-android-friends:before {
+  content: "\f2e2"; }
+
+.ion-android-hand:before {
+  content: "\f2e3"; }
+
+.ion-android-image:before {
+  content: "\f2e4"; }
+
+.ion-android-inbox:before {
+  content: "\f2e5"; }
+
+.ion-android-information:before {
+  content: "\f2e6"; }
+
+.ion-android-keypad:before {
+  content: "\f2e7"; }
+
+.ion-android-lightbulb:before {
+  content: "\f2e8"; }
+
+.ion-android-locate:before {
+  content: "\f2e9"; }
+
+.ion-android-location:before {
+  content: "\f2ea"; }
+
+.ion-android-mail:before {
+  content: "\f2eb"; }
+
+.ion-android-microphone:before {
+  content: "\f2ec"; }
+
+.ion-android-mixer:before {
+  content: "\f2ed"; }
+
+.ion-android-more:before {
+  content: "\f2ee"; }
+
+.ion-android-note:before {
+  content: "\f2ef"; }
+
+.ion-android-playstore:before {
+  content: "\f2f0"; }
+
+.ion-android-printer:before {
+  content: "\f2f1"; }
+
+.ion-android-promotion:before {
+  content: "\f2f2"; }
+
+.ion-android-reminder:before {
+  content: "\f2f3"; }
+
+.ion-android-remove:before {
+  content: "\f2f4"; }
+
+.ion-android-search:before {
+  content: "\f2f5"; }
+
+.ion-android-send:before {
+  content: "\f2f6"; }
+
+.ion-android-settings:before {
+  content: "\f2f7"; }
+
+.ion-android-share:before {
+  content: "\f2f8"; }
+
+.ion-android-social:before {
+  content: "\f2fa"; }
+
+.ion-android-social-user:before {
+  content: "\f2f9"; }
+
+.ion-android-sort:before {
+  content: "\f2fb"; }
+
+.ion-android-star:before {
+  content: "\f2fc"; }
+
+.ion-android-stopwatch:before {
+  content: "\f2fd"; }
+
+.ion-android-storage:before {
+  content: "\f2fe"; }
+
+.ion-android-system-back:before {
+  content: "\f2ff"; }
+
+.ion-android-system-home:before {
+  content: "\f300"; }
+
+.ion-android-system-windows:before {
+  content: "\f301"; }
+
+.ion-android-timer:before {
+  content: "\f302"; }
+
+.ion-android-trash:before {
+  content: "\f303"; }
+
+.ion-android-volume:before {
+  content: "\f304"; }
+
+.ion-android-wifi:before {
+  content: "\f305"; }
 
 .ion-archive:before {
   content: "\f102"; }
@@ -656,6 +927,9 @@
 .ion-briefcase:before {
   content: "\f26c"; }
 
+.ion-bug:before {
+  content: "\f2be"; }
+
 .ion-calculator:before {
   content: "\f26d"; }
 
@@ -764,6 +1038,9 @@
 .ion-earth:before {
   content: "\f276"; }
 
+.ion-edit:before {
+  content: "\f2bf"; }
+
 .ion-egg:before {
   content: "\f277"; }
 
@@ -775,6 +1052,9 @@
 
 .ion-eye:before {
   content: "\f133"; }
+
+.ion-eye-disabled:before {
+  content: "\f306"; }
 
 .ion-female:before {
   content: "\f278"; }
@@ -802,6 +1082,9 @@
 
 .ion-fork:before {
   content: "\f27a"; }
+
+.ion-fork-repo:before {
+  content: "\f2c0"; }
 
 .ion-forward:before {
   content: "\f13a"; }
@@ -1036,6 +1319,12 @@
 
 .ion-ios7-cloudy:before {
   content: "\f17a"; }
+
+.ion-ios7-cloudy-night:before {
+  content: "\f308"; }
+
+.ion-ios7-cloudy-night-outline:before {
+  content: "\f307"; }
 
 .ion-ios7-cloudy-outline:before {
   content: "\f179"; }
@@ -1367,6 +1656,9 @@
 .ion-ios7-skipforward-outline:before {
   content: "\f1dd"; }
 
+.ion-ios7-snowy:before {
+  content: "\f309"; }
+
 .ion-ios7-speedometer:before {
   content: "\f290"; }
 
@@ -1556,6 +1848,9 @@
 .ion-minus-round:before {
   content: "\f208"; }
 
+.ion-model-s:before {
+  content: "\f2c1"; }
+
 .ion-monitor:before {
   content: "\f20a"; }
 
@@ -1574,8 +1869,14 @@
 .ion-navigate:before {
   content: "\f2a3"; }
 
+.ion-no-smoking:before {
+  content: "\f2c2"; }
+
 .ion-nuclear:before {
   content: "\f2a4"; }
+
+.ion-paper-airplane:before {
+  content: "\f2c3"; }
 
 .ion-paperclip:before {
   content: "\f20f"; }
@@ -1609,6 +1910,9 @@
 
 .ion-play:before {
   content: "\f215"; }
+
+.ion-playstation:before {
+  content: "\f30a"; }
 
 .ion-plus:before {
   content: "\f218"; }
@@ -1715,6 +2019,9 @@
 .ion-social-facebook-outline:before {
   content: "\f230"; }
 
+.ion-social-freebsd-devil:before {
+  content: "\f2c4"; }
+
 .ion-social-github:before {
   content: "\f233"; }
 
@@ -1769,6 +2076,9 @@
 .ion-social-tumblr-outline:before {
   content: "\f240"; }
 
+.ion-social-tux:before {
+  content: "\f2c5"; }
+
 .ion-social-twitter:before {
   content: "\f243"; }
 
@@ -1819,6 +2129,9 @@
 
 .ion-stats-bars:before {
   content: "\f2b5"; }
+
+.ion-steam:before {
+  content: "\f30b"; }
 
 .ion-stop:before {
   content: "\f24f"; }
@@ -1879,6 +2192,9 @@
 
 .ion-wrench:before {
   content: "\f2ba"; }
+
+.ion-xbox:before {
+  content: "\f30c"; }
 
 /**
  * Resets
@@ -2209,9 +2525,10 @@ img {
 body, .ionic-body {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden;
-  @incude text-size-adjust(none);
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
@@ -2253,10 +2570,16 @@ body, .ionic-body {
   left: 0;
   position: absolute;
   overflow: hidden;
-  -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden;
   margin-top: -1px;
-  width: auto; }
+  width: auto;
+  height: auto; }
+
+.scroll-view {
+  overflow: hidden;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  margin-top: -1px; }
 
 /**
  * Scroll is the scroll view component available for complex and custom
@@ -2277,8 +2600,38 @@ body, .ionic-body {
   -webkit-transform-origin: left top;
   -moz-transform-origin: left top;
   transform-origin: left top;
-  -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden; }
+
+.scroll-bar {
+  position: absolute;
+  z-index: 9999; }
+
+.scroll-bar-h {
+  height: 3px;
+  left: 2px;
+  right: 2px;
+  bottom: 3px; }
+  .scroll-bar-h .scroll-bar-indicator {
+    height: 100%; }
+
+.scroll-bar-v {
+  width: 3px;
+  bottom: 2px;
+  top: 2px;
+  right: 3px; }
+  .scroll-bar-v .scroll-bar-indicator {
+    width: 100%; }
+
+.scroll-bar-indicator {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  opacity: 1; }
+  .scroll-bar-indicator.scroll-bar-fade-out {
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+    opacity: 0; }
 
 .scroll-refresher {
   overflow: hidden;
@@ -2292,10 +2645,13 @@ body, .ionic-body {
     animation-duration: 1.5s; }
 
 .scroll-refresher-content {
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: 15px;
   width: 100%;
-  height: 100%;
-  text-align: center; }
+  text-align: center;
+  font-size: 30px;
+  color: #666666; }
 
 .ionic-refresher-content {
   position: absolute;
@@ -2304,16 +2660,17 @@ body, .ionic-body {
   width: 100%;
   text-align: center;
   font-size: 30px;
-  color: #666666;
-  -webkit-animation-duration: 200ms;
-  -moz-animation-duration: 200ms;
-  animation-duration: 200ms;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  animation-fill-mode: both; }
+  color: #666666; }
+  .ionic-refresher-content .icon-pulling {
+    -webkit-animation-duration: 200ms;
+    -moz-animation-duration: 200ms;
+    animation-duration: 200ms;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both; }
 
 @keyframes refresh-spin {
   0% {
@@ -2337,7 +2694,7 @@ body, .ionic-body {
   display: none; }
 .scroll-refresher.active.refreshing .icon-refreshing {
   display: block; }
-.scroll-refresher.active .ionic-refresher-content {
+.scroll-refresher.active .ionic-refresher-content .icon-pulling {
   -webkit-animation-name: refresh-spin;
   -moz-animation-name: refresh-spin;
   animation-name: refresh-spin; }
@@ -2371,17 +2728,18 @@ body, .ionic-body {
   bottom: 49px; }
 
 .pane {
-  position: fixed; }
+  position: fixed;
+  z-index: 1; }
 
 .view {
-  position: absolute; }
+  position: absolute;
+  z-index: 1; }
 
 .pane, .view {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
   width: 100%;
   height: 100%;
   background-color: #fff; }
@@ -2568,6 +2926,7 @@ a.subdued {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0); }
@@ -2827,7 +3186,6 @@ a.subdued {
     padding: 0 8px;
     min-width: initial;
     min-height: 31px;
-    height: 32px;
     font-size: 12px;
     line-height: 30px; }
     .bar .button .icon, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
@@ -2843,7 +3201,6 @@ a.subdued {
       padding-left: 2px; }
   .bar .button-bar > .button, .bar .buttons > .button {
     min-height: 31px;
-    height: 32px;
     line-height: 30px; }
   .bar .button-bar + .button, .bar .button + .button-bar {
     margin-left: 5px; }
@@ -3252,7 +3609,7 @@ a.subdued {
   overflow: hidden;
   min-height: 100%;
   max-height: 100%;
-  width: 270px;
+  width: 275px;
   background-color: #fff; }
 
 .menu-content {
@@ -3487,19 +3844,24 @@ button.item.item-complex {
 
 .item-complex .item-content,
 .item-radio .item-content {
-  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
-  -moz-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
-  transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
   /**
    * The content area of a complex list item. This area can
    * Slide left and right and be dragged to support different
    * UI interactions.
    */
+  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  -moz-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
   position: relative;
   z-index: 2;
   padding: 15px 40px 15px 15px;
   border: none;
   background-color: white; }
+
+a.item-content {
+  display: block;
+  text-decoration: none;
+  color: inherit; }
 
 .item-text-wrap,
 .item-text-wrap h1,
@@ -3573,8 +3935,15 @@ button.item.item-complex {
   .item-complex.item-icon-left .item-content {
     padding-left: 45px; }
 
-.item-icon-right .icon {
-  right: 7.5px; }
+.item-icon-right {
+  padding-right: 45px; }
+  .item-icon-right .icon {
+    right: 7.5px; }
+
+.item-complex.item-icon-right {
+  padding-right: 0; }
+  .item-complex.item-icon-right .item-content {
+    padding-right: 45px; }
 
 .item-icon-left.item-icon-right .icon:first-child {
   right: auto; }
@@ -3622,7 +3991,9 @@ button.item.item-button-right {
   padding-right: 75px; }
 
 .item-button-right > .button,
-.item-button-right .item-content > .button {
+.item-button-right .item-content > .button,
+.item-button-right > .buttons,
+.item-button-right .item-content > .buttons {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -3641,11 +4012,20 @@ button.item.item-button-right {
   min-height: 32px;
   font-size: 32px; }
   .item-button-right > .button .icon,
-  .item-button-right .item-content > .button .icon {
+  .item-button-right .item-content > .button .icon,
+  .item-button-right > .buttons .icon,
+  .item-button-right .item-content > .buttons .icon {
     position: relative;
     left: auto;
     width: auto;
     line-height: 31px; }
+  .item-button-right > .button > .button,
+  .item-button-right .item-content > .button > .button,
+  .item-button-right > .buttons > .button,
+  .item-button-right .item-content > .buttons > .button {
+    min-height: 32px;
+    font-size: 32px;
+    margin: 0px 2px; }
 
 /**
  * Auto Right Arrow Icon
@@ -3757,9 +4137,9 @@ button.item-button-right:after {
   color: #aaa;
   font-size: 14px; }
 
-.item-sliding {
-  -webkit-transition: transform 0.1s ease-in-out;
-  -moz-transition: transform 0.1s ease-in-out;
+.item-complex .item-content.item-sliding {
+  -webkit-transition: -webkit-transform 0.1s ease-in-out;
+  -moz-transition: -moz-transform 0.1s ease-in-out;
   transition: transform 0.1s ease-in-out; }
 
 .item-reordering {
@@ -3786,7 +4166,7 @@ button.item-button-right:after {
   line-height: 100%; }
   .item-edit .button {
     height: 100%; }
-    .item-edit .button .icon, .item-edit .button i {
+    .item-edit .button.icon {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -3800,6 +4180,7 @@ button.item-button-right:after {
       align-items: center;
       position: absolute;
       top: 0;
+      left: 0;
       height: 100%;
       color: #ef4e3a;
       font-size: 24px; }
@@ -3827,12 +4208,13 @@ button.item-button-right:after {
   top: 0;
   right: 0;
   z-index: 0;
-  height: 100%; }
+  width: 50px;
+  height: 100%;
+  background: inherit; }
   .item-drag .button {
     height: 100%;
-    border: none;
-    border-radius: 0; }
-    .item-drag .button .icon, .item-drag .button i {
+    min-width: 42px; }
+    .item-drag .button.icon:before {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -3847,7 +4229,7 @@ button.item-button-right:after {
       position: absolute;
       top: 0;
       height: 100%;
-      font-size: 24px; }
+      font-size: 32px; }
 
 /**
  * The hidden right-side buttons that can be exposed under a list item
@@ -3864,6 +4246,9 @@ button.item-button-right:after {
     border: none;
     border-radius: 0; }
 
+.item-options-hide .item-options {
+  display: none; }
+
 /**
  * Lists
  * --------------------------------------------------
@@ -3877,11 +4262,15 @@ button.item-button-right:after {
 
 /**
  * List editing styles. These trigger when the entire list goes into
- * "edit mode"
+ * "edit mode" or reordering list items
  */
 .list-editing .item-content {
-  margin-right: 50px;
   margin-left: 50px; }
+
+.list-reordering .item-content {
+  margin-right: 50px; }
+.list-reordering .item-drag {
+  z-index: 1; }
 
 /**
  * List Header
@@ -4027,7 +4416,9 @@ button.item-button-right:after {
   position: relative;
   white-space: nowrap;
   font-size: 0;
-  -webkit-transition: -webkit-transform 0 ease-in-out; }
+  -webkit-transition: -webkit-transform 0 ease-in-out;
+  -moz-transition: -moz-transform 0 ease-in-out;
+  transition: transform 0 ease-in-out; }
 
 .slide-box-animating {
   -webkit-transition-duration: 0.2s;
@@ -4181,6 +4572,19 @@ textarea {
   .item-input.item.active, .ionic-pseudo .item-input.item:active {
     border-color: #dddddd;
     background-color: transparent; }
+  .item-input .button-bar {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 220px;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 220px;
+    -ms-flex: 1 0 220px;
+    flex: 1 0 220px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; }
 
 .item-input-inset {
   display: -webkit-box;
@@ -4577,12 +4981,11 @@ input[type="range"] {
   padding-right: 2px;
   padding-left: 1px;
   width: auto;
-  height: 4px;
   height: 35px;
   outline: none;
   background: linear-gradient(to right, #cccccc 0%, #cccccc 100%);
   background-position: center;
-  background-size: 96% 4px;
+  background-size: 99% 4px;
   background-repeat: no-repeat;
   -webkit-appearance: none; }
   input[type="range"]::-webkit-slider-thumb {
@@ -4598,17 +5001,17 @@ input[type="range"] {
     /* what creates the colorful line on the left side of the slider */
     position: absolute;
     top: 8px;
-    left: -320px;
-    width: 320px;
+    left: -2001px;
+    width: 2000px;
     height: 4px;
     background: #444444;
     content: ' '; }
   input[type="range"]::-webkit-slider-thumb:after {
     /* create a larger (but hidden) hit area */
     position: absolute;
-    top: -15px;
-    left: -15px;
-    padding: 25px;
+    top: -20px;
+    left: -20px;
+    padding: 30px;
     content: ' '; }
 
 .range {
@@ -4645,28 +5048,44 @@ input[type="range"] {
 
 .range .icon {
   -webkit-box-flex: 0;
-  -webkit-flex: 0 1 24px;
+  -webkit-flex: 0;
   -moz-box-flex: 0;
-  -moz-flex: 0 1 24px;
-  -ms-flex: 0 1 24px;
-  flex: 0 1 24px;
+  -moz-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
   display: block;
   min-width: 24px;
   text-align: center;
   font-size: 24px; }
 
 .range input {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1 272px;
-  -moz-box-flex: 0;
-  -moz-flex: 0 1 272px;
-  -ms-flex: 0 1 272px;
-  flex: 0 1 272px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   display: block;
   margin-right: 10px;
   margin-left: 10px;
-  max-width: 320px;
   width: 100%; }
+
+.range-label {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: block;
+  white-space: nowrap; }
+
+.range-label:first-child {
+  padding-left: 5px; }
+
+.range input + .range-label {
+  padding-right: 5px;
+  padding-left: 0; }
 
 /**
  * Buttons
@@ -4986,7 +5405,6 @@ input[type="range"] {
   padding: 0 6px;
   min-width: initial;
   border-color: transparent;
-  background: none;
   background: none; }
   .button-icon.button:active, .button-icon.button.active {
     border-color: transparent;
@@ -5079,6 +5497,20 @@ a.button {
   -ms-flex: 1;
   flex: 1;
   width: 100%; }
+  .button-bar.button-bar-inline {
+    display: block;
+    width: auto;
+    *zoom: 1; }
+    .button-bar.button-bar-inline:before, .button-bar.button-bar-inline:after {
+      display: table;
+      content: "";
+      line-height: 0; }
+    .button-bar.button-bar-inline:after {
+      clear: both; }
+    .button-bar.button-bar-inline > .button {
+      width: auto;
+      display: inline-block;
+      float: left; }
 
 .button-bar > .button {
   -webkit-box-flex: 1;
@@ -5963,6 +6395,15 @@ a.button {
 .full-image {
   width: 100%; }
 
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+  .clearfix:after {
+    clear: both; }
+
 /**
  * Content Padding
  * --------------------------------------------------
@@ -6095,3 +6536,14 @@ a.button {
   top: 64px; }
 .platform-ios7 .has-subheader {
   top: 108px; }
+
+.platform-android .bar-header {
+  height: 48px; }
+.platform-android .has-header {
+  top: 48px; }
+.platform-android .bar-subheader {
+  top: 48px; }
+.platform-android .has-subheader {
+  top: 96px; }
+.platform-android .title {
+  line-height: 48px; }
