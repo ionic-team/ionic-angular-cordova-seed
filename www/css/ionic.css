@@ -1,9 +1,8 @@
-@charset "UTF-8";
 /*!
  * Copyright 2013 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v0.9.14
+ * Ionic, v0.9.17
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -3849,9 +3848,9 @@ button.item.item-complex {
    * Slide left and right and be dragged to support different
    * UI interactions.
    */
-  -webkit-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
-  -moz-transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
-  transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, left 0.2s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   position: relative;
   z-index: 2;
   padding: 15px 40px 15px 15px;
@@ -3860,8 +3859,8 @@ button.item.item-complex {
 
 a.item-content {
   display: block;
-  text-decoration: none;
-  color: inherit; }
+  color: inherit;
+  text-decoration: none; }
 
 .item-text-wrap,
 .item-text-wrap h1,
@@ -4023,9 +4022,9 @@ button.item.item-button-right {
   .item-button-right .item-content > .button > .button,
   .item-button-right > .buttons > .button,
   .item-button-right .item-content > .buttons > .button {
+    margin: 0px 2px;
     min-height: 32px;
-    font-size: 32px;
-    margin: 0px 2px; }
+    font-size: 32px; }
 
 /**
  * Auto Right Arrow Icon
@@ -4137,13 +4136,9 @@ button.item-button-right:after {
   color: #aaa;
   font-size: 14px; }
 
-.item-complex .item-content.item-sliding {
-  -webkit-transition: -webkit-transform 0.1s ease-in-out;
-  -moz-transition: -moz-transform 0.1s ease-in-out;
-  transition: transform 0.1s ease-in-out; }
-
 .item-reordering {
   position: absolute;
+  z-index: 20;
   width: 100%; }
 
 .item-placeholder {
@@ -4212,8 +4207,8 @@ button.item-button-right:after {
   height: 100%;
   background: inherit; }
   .item-drag .button {
-    height: 100%;
-    min-width: 42px; }
+    min-width: 42px;
+    height: 100%; }
     .item-drag .button.icon:before {
       display: -webkit-box;
       display: -webkit-flex;
@@ -4265,7 +4260,9 @@ button.item-button-right:after {
  * "edit mode" or reordering list items
  */
 .list-editing .item-content {
-  margin-left: 50px; }
+  -webkit-transform: translate3d(50px, 0, 0);
+  -moz-transform: translate3d(50px, 0, 0);
+  transform: translate3d(50px, 0, 0); }
 
 .list-reordering .item-content {
   margin-right: 50px; }
@@ -4407,44 +4404,38 @@ button.item-button-right:after {
  * Slide Box
  * --------------------------------------------------
  */
-.slide-box {
+.slider {
   position: relative;
   overflow: hidden;
-  background-color: #000; }
+  visibility: hidden; }
 
-.slide-box-slides {
+.slider-slides {
+  position: relative; }
+
+.slider-slide {
+  display: block;
   position: relative;
-  white-space: nowrap;
-  font-size: 0;
-  -webkit-transition: -webkit-transform 0 ease-in-out;
-  -moz-transition: -moz-transform 0 ease-in-out;
-  transition: transform 0 ease-in-out; }
-
-.slide-box-animating {
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  transition-duration: 0.2s; }
-
-.slide-box-slide {
-  display: inline-block;
   width: 100%;
-  height: 100%;
+  float: left;
   vertical-align: top; }
-  .slide-box-slide img {
-    width: 100%; }
 
-.slide-box-pager {
+.slider-slide-image > img {
+  width: 100%; }
+
+.slider-pager {
   position: absolute;
   bottom: 20px;
   width: 100%;
-  text-align: center; }
-  .slide-box-pager > * {
+  text-align: center;
+  z-index: 1; }
+  .slider-pager .slider-pager-page {
     display: inline-block;
-    margin: 0px 5px;
+    margin: 0px 3px;
+    width: 15px;
     color: #fff;
     text-decoration: none;
     opacity: 0.3; }
-    .slide-box-pager > *.active {
+    .slider-pager .slider-pager-page.active {
       opacity: 1;
       -webkit-transition: opacity 0.4s ease-in;
       -moz-transition: opacity 0.4s ease-in;
@@ -5708,6 +5699,11 @@ a.button {
 @keyframes spin {
   100% {
     transform: rotate(360deg); } }
+
+.no-animation > .ng-enter, .no-animation.ng-enter, .no-animation > .ng-leave, .no-animation.ng-leave {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none; }
 
 .noop-animation > .ng-enter, .noop-animation.ng-enter, .noop-animation > .ng-leave, .noop-animation.ng-leave {
   -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;

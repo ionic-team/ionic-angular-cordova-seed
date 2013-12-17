@@ -11,11 +11,11 @@
     <tab title="Pets" icon="icon ion-home" ng-controller="PetsTabCtrl">
       <content has-header="true" has-tabs="true">
         <list>
-          <link-item ng-repeat="pet in pets" type="item-text-wrap" href="#/pet/{{pet.id}}">
+          <item ng-repeat="pet in pets" type="item-text-wrap" href="#/pet/{{pet.id}}">
               <h3>{{pet.title}}</h3>
               <p>{{pet.description}}</p>
             </item>
-          </link-item>
+          </item>
         </list>
       </content>
     </tab>
