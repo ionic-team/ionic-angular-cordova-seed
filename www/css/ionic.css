@@ -1,8 +1,8 @@
 /*!
- * Copyright 2013 Drifty Co.
+ * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v0.9.17
+ * Ionic, v0.9.20-alpha
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -12,15 +12,15 @@
  *
  */
 /*!
-  Ionicons, v1.4.0
+  Ionicons, v1.4.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
   https://twitter.com/helloimben  https://twitter.com/ionicframework
   MIT License: https://github.com/driftyco/ionicons
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../fonts/ionicons.eot?v=1.4.0");
-  src: url("../fonts/ionicons.eot?v=1.4.0#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.4.0") format("truetype"), url("../fonts/ionicons.woff?v=1.4.0") format("woff"), url("../fonts/ionicons.svg?v=1.4.0#Ionicons") format("svg");
+  src: url("../fonts/ionicons.eot?v=1.4.1");
+  src: url("../fonts/ionicons.eot?v=1.4.1#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.4.1") format("truetype"), url("../fonts/ionicons.woff?v=1.4.1") format("woff"), url("../fonts/ionicons.svg?v=1.4.1#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -2522,6 +2522,7 @@ img {
   -webkit-user-drag: none; }
 
 body, .ionic-body {
+  -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   -webkit-backface-visibility: hidden;
@@ -2549,18 +2550,6 @@ body, .ionic-body {
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-user-drag: none; }
-
-.content:before,
-.content:after {
-  display: block;
-  overflow: hidden;
-  height: 0;
-  content: "\00a0"; }
-
-.content {
-  position: absolute;
-  width: 100%;
-  height: 100%; }
 
 .scroll-content {
   top: 0;
@@ -2697,6 +2686,24 @@ body, .ionic-body {
   -webkit-animation-name: refresh-spin;
   -moz-animation-name: refresh-spin;
   animation-name: refresh-spin; }
+
+infinite-scroll .scroll-infinite {
+  overflow: hidden;
+  margin-top: -70px;
+  height: 60px;
+  position: relative; }
+
+.scroll-infinite-content {
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: #666666; }
+
+infinite-scroll.active .scroll-infinite {
+  margin-top: -30px; }
 
 .overflow-scroll {
   overflow-x: hidden;
@@ -3208,7 +3215,7 @@ a.subdued {
   .bar > .button.pull-right,
   .bar .title + .buttons {
     position: absolute;
-    top: 5px;
+    top: 6px;
     right: 5px;
     bottom: 5px; }
 
@@ -3662,6 +3669,7 @@ a.subdued {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   visibility: hidden;
   width: 100%;
   height: 100%; }
@@ -4410,12 +4418,14 @@ button.item-button-right:after {
   visibility: hidden; }
 
 .slider-slides {
-  position: relative; }
+  position: relative;
+  height: 100%; }
 
 .slider-slide {
   display: block;
   position: relative;
   width: 100%;
+  height: 100%;
   float: left;
   vertical-align: top; }
 
@@ -4432,7 +4442,7 @@ button.item-button-right:after {
     display: inline-block;
     margin: 0px 3px;
     width: 15px;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     opacity: 0.3; }
     .slider-pager .slider-pager-page.active {
@@ -5464,11 +5474,18 @@ input[type="range"] {
 
 button.button-block,
 button.button-full,
-.button-full > button.button {
+.button-full > button.button,
+input.button.button-block {
   width: 100%; }
 
 a.button {
   text-decoration: none; }
+
+.button.disabled,
+.button[disabled] {
+  opacity: .4;
+  cursor: default !important;
+  pointer-events: none; }
 
 /**
  * Button Bar
@@ -5604,14 +5621,14 @@ a.button {
   to {
     transform: translateX(0); } }
 
-@-webkit-keyframes slideOutToleft {
+@-webkit-keyframes slideOutToLeft {
   from {
     -webkit-transform: translate3d(0, 0, 0); }
 
   to {
     -webkit-transform: translate3d(-100%, 0, 0); } }
 
-@-moz-keyframes slideOutToleft {
+@-moz-keyframes slideOutToLeft {
   from {
     -moz-transform: translateX(0); }
 
@@ -6033,9 +6050,9 @@ a.button {
   animation-name: slideOutToRight; }
 
 .slide-in-up {
-  -webkit-transform: translate3d(0, 0%, 0);
-  -moz-transform: translate3d(0, 0%, 0);
-  transform: translate3d(0, 0%, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   opacity: 1; }
   .slide-in-up.ng-enter, .slide-in-up .ng-enter {
     -webkit-transform: translate3d(0, 100%, 0);
@@ -6077,9 +6094,9 @@ a.button {
   -webkit-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
   -moz-animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
   animation-timing-function: cubic-bezier(0.1, 0.7, 0.1, 1);
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  animation-fill-mode: both; }
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
 
 .slide-in-up-add-active {
   -webkit-animation-name: slideInUp;
@@ -6124,9 +6141,9 @@ a.button {
  */
 .nav-title-slide-ios7 > .ng-enter, .nav-title-slide-ios7.ng-enter,
 .nav-title-slide-ios7 > .ng-leave, .nav-title-slide-ios7.ng-leave {
-  -webkit-transition: all 350ms;
-  -moz-transition: all 350ms;
-  transition: all 350ms;
+  -webkit-transition: all 250ms;
+  -moz-transition: all 250ms;
+  transition: all 250ms;
   -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -6146,27 +6163,23 @@ a.button {
   -moz-transform: translate3d(-30%, 0, 0);
   transform: translate3d(-30%, 0, 0);
   opacity: 0; }
-
-.reverse .nav-title-slide-ios7 > .ng-enter, .reverse .nav-title-slide-ios7.ng-enter,
-.reverse .nav-title-slide-ios7 > .ng-leave, .reverse .nav-title-slide-ios7.ng-leave {
-  -webkit-transition: all 350ms;
-  -moz-transition: all 350ms;
-  transition: all 350ms;
-  -webkit-transition-timing-function: ease-in-out;
-  -moz-transition-timing-function: ease-in-out;
-  transition-timing-function: ease-in-out;
+.nav-title-slide-ios7.reverse > .ng-enter, .nav-title-slide-ios7.reverse.ng-enter,
+.nav-title-slide-ios7.reverse > .ng-leave, .nav-title-slide-ios7.reverse.ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  -moz-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
   opacity: 1; }
-.reverse .nav-title-slide-ios7 > .ng-enter, .reverse .nav-title-slide-ios7.ng-enter {
+.nav-title-slide-ios7.reverse > .ng-enter, .nav-title-slide-ios7.reverse.ng-enter {
   -webkit-transform: translate3d(-30%, 0, 0);
   -moz-transform: translate3d(-30%, 0, 0);
   transform: translate3d(-30%, 0, 0);
   opacity: 0; }
-.reverse .nav-title-slide-ios7 > .ng-enter.ng-enter-active, .reverse .nav-title-slide-ios7.ng-enter.ng-enter-active {
+.nav-title-slide-ios7.reverse > .ng-enter.ng-enter-active, .nav-title-slide-ios7.reverse.ng-enter.ng-enter-active {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   opacity: 1; }
-.reverse .nav-title-slide-ios7 > .ng-leave.ng-leave-active, .reverse .nav-title-slide-ios7.ng-leave.ng-leave-active {
+.nav-title-slide-ios7.reverse > .ng-leave.ng-leave-active, .nav-title-slide-ios7.reverse.ng-leave.ng-leave-active {
   -webkit-transform: translate3d(30%, 0, 0);
   -moz-transform: translate3d(30%, 0, 0);
   transform: translate3d(30%, 0, 0);
@@ -6524,6 +6537,8 @@ a.button {
  */
 .platform-ios7 .bar-header {
   height: 64px; }
+  .platform-ios7 .bar-header.item-input-inset .item-input-wrapper {
+    margin-top: 19px !important; }
   .platform-ios7 .bar-header > * {
     margin-top: 20px; }
 .platform-ios7 .has-header {
