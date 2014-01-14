@@ -2594,6 +2594,9 @@ body, .ionic-body {
   position: absolute;
   z-index: 9999; }
 
+.ng-animate .scroll-bar {
+  visibility: hidden; }
+
 .scroll-bar-h {
   height: 3px;
   left: 2px;

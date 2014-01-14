@@ -638,7 +638,7 @@ angular.module('ionic.service.view', ['ui.router'])
 }])
 
 .factory('$ionicViewService', ['$rootScope', '$state', '$location', '$window', '$injector', 
-                function( $rootScope,   $state,   $location,   $window,   $injector) {
+                      function( $rootScope,   $state,   $location,   $window,   $injector) {
   var $animate = $injector.has('$animate') ? $injector.get('$animate') : false;
 
   var View = function(){};
@@ -930,6 +930,7 @@ angular.module('ionic.service.view', ['ui.router'])
       if($animate && animationClass && opts.doAnimation !== false && opts.navDirection) {
         // set the animation we're gonna use
         this.setAnimationClass(opts.parentElement, animationClass, opts.navDirection);
+        opts.enteringElement.addClass('ng-enter');
 
         // start the animations
         if(opts.leavingElement) {
@@ -1229,6 +1230,8 @@ angular.module('ionic.ui.content', ['ionic.ui.service'])
       hasScrollY: '@',
       scrollbarX: '@',
       scrollbarY: '@',
+      startX: '@',
+      startY: '@',
       scrollEventInterval: '@'
     },
 
@@ -1274,6 +1277,8 @@ angular.module('ionic.ui.content', ['ionic.ui.service'])
             sv = new ionic.views.Scroll({
               el: $element[0],
               bouncing: enableBouncing,
+              startX: $scope.$eval($scope.startX) || 0,
+              startY: $scope.$eval($scope.startY) || 0,
               scrollbarX: $scope.$eval($scope.scrollbarX) !== false,
               scrollbarY: $scope.$eval($scope.scrollbarY) !== false,
               scrollingX: $scope.$eval($scope.hasScrollX) === true,
