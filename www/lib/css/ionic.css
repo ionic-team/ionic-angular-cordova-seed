@@ -3183,7 +3183,7 @@ a.subdued {
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 18px;
-    line-height: 42px; }
+    line-height: 44px; }
     .bar .title.title-left {
       text-align: left; }
     .bar .title.title-right {
@@ -4349,16 +4349,6 @@ button.item-button-right:after {
 
 .padding-right > .list .item {
   margin-right: 0; }
-
-/**
- * Nav
- * --------------------------------------------------
- */
-.nav-page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: white; }
 
 /**
  * Badges
@@ -6396,6 +6386,9 @@ a.button {
 .inline {
   display: inline-block; }
 
+.disable-pointer-events {
+  pointer-events: none; }
+
 .block {
   display: block;
   clear: both; }
@@ -6556,7 +6549,8 @@ a.button {
 .platform-ios7.status-bar-hide {
   margin-bottom: 20px; }
 
-.platform-android .bar-header,
+.platform-android .bar-header {
+  height: 48px; }
 .platform-android .has-header,
 .platform-android .bar-subheader {
   top: 48px; }
