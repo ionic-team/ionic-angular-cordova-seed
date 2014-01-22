@@ -1,0 +1,23 @@
+// First, use SCSS variables to customize the Ionic defaults.
+// 
+// Check out ../bower_components/ionic/scss/_variables.scss
+// for all customizable properties.
+
+// For example, uncomment the following line to change
+// the `positive` color to green:
+// $positive: green;
+
+// Then, import the Ionic SCSS stylesheet.
+@import "../bower_components/ionic/scss/ionic";
+
+// ==============================================================
+
+// Add your app's custom SCSS below. Go crazy, make it your own,
+// and checkout http://www.sass-lang.com/ for SCSS documentation.
+
+.ionic-logo {
+  display: block;
+  margin: 15px auto;
+  width: 96px;
+  height: 96px;
+}
