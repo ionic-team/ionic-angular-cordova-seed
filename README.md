@@ -55,6 +55,8 @@ $ cp -r bower_components/ionic/dist/fonts/* fonts/
 
 If you ever update Ionic and want to pull a new version of Ionicons into your app, just run this command again.
 
+### Previewing
+
 When you're done with that, you can preview the app either in the browser or on the iOS Simulator.
 
 To open the app in the browser at ```http://localhost:8000/```, make sure you're in the ```www/``` directory and run:
