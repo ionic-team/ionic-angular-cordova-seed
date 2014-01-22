@@ -34,7 +34,28 @@ You'll also see that the app's main css file, ```css/app.css```, is very long. L
 $ sass --watch scss:css
 ```
 
-If you change ```scss/app.scss```, you'll see that sass automatically re-compiles the css. When you're done with that, you can preview the app either in the browser or on the iOS Simulator.
+If you change ```scss/app.scss```, you'll see that sass automatically re-compiles the css.
+
+Before we preview the app, there's one more thing we need to do. If we look at ```css/app.css```, we can see that (around line 20), Ionic is referencing font files via a relative path:
+
+```css
+@font-face {
+  font-family: "Ionicons";
+  src: url("../fonts/ionicons.eot?v=1.4.1");
+  src: url("../fonts/ionicons.eot?v=1.4.1#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.4.1") format("truetype"), url("../fonts/ionicons.woff?v=1.4.1") format("woff"), url("../fonts/ionicons.svg?v=1.4.1#Ionicons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+```
+
+The Ionicons files don't exist at that path! Because we're using Sass to manage our styles, we need to copy the font files to a new directory. Do this by running the following command inside of the ```www/``` directory: 
+
+```bash
+$ cp -r bower_components/ionic/dist/fonts/* fonts/
+```
+
+If you ever update Ionic and want to pull a new version of Ionicons into your app, just run this command again.
+
+When you're done with that, you can preview the app either in the browser or on the iOS Simulator.
 
 To open the app in the browser at ```http://localhost:8000/```, make sure you're in the ```www/``` directory and run:
 
