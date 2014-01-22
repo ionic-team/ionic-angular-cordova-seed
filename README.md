@@ -46,6 +46,7 @@ To open the app in the iOS Simulator, make sure that you have both the Xcode Dev
 
 ```bash
 $ cordova platform add ios
+$ cordova plugin add org.apache.cordova.device
 $ cordova run ios
 ```
 
