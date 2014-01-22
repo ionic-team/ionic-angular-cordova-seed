@@ -32,5 +32,8 @@
     "components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "ionic": "~0.9.20-alpha"
+  }
 }
