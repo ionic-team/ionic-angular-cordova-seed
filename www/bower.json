@@ -1,0 +1,36 @@
+{
+  "name": "ionic-angular-cordova-seed",
+  "version": "0.0.0",
+  "homepage": "https://github.com/driftyco/ionic-angular-cordova-seed",
+  "authors": [
+    "Max Lynch <max@drifty.com>",
+    "Adam Bradley <adam@drifty.com>",
+    "Ben Sperry <ben@drifty.com>"
+  ],
+  "description": "The perfect starting point for an Ionic project.",
+  "main": "index.html",
+  "keywords": [
+    "mobile",
+    "html5",
+    "ionic",
+    "phonegap",
+    "trigger",
+    "triggerio",
+    "cordova",
+    "phonegap",
+    "angularjs",
+    "angular",
+    "ratchet",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ]
+}
