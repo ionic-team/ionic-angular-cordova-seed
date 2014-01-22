@@ -5,7 +5,7 @@ The perfect starting point for an Ionic project.
 
 ## Quick Start
 
-Before getting started, make sure that you've installed Bower, and Sass.
+Before getting started, make sure that you've installed Bower and Sass.
 
 ```bash
 $ sudo npm install -g bower
@@ -28,22 +28,21 @@ $ bower install
 
 When that's done, you'll notice a new directory called ```bower_components```. This keeps all of the Ionic files managed neatly, making it quick and easy to update Ionic when a new release comes out. Learn more about Bower on their website, [bower.io](http://bower.io/).
 
-You'll also see that the app's main css file, ```css/app.css```, is very long. Luckily, because the seed project uses Sass (check out their website, [sass-lang.com](http://sass-lang.com/)) for CSS preprocessing, you won't need to poke around in this file much at all. All the work that you do will be in the ```scss/``` directory. After looking at ```scss/app.scss```, build the css by running:
+You'll also see that the app's main css file, ```css/app.css```, is very long. Luckily, because the seed project uses Sass (check out their website, [sass-lang.com](http://sass-lang.com/)) for CSS preprocessing, you won't need to poke around in this file much at all. All the work that you do will be in the ```scss/``` directory. After looking at ```scss/app.scss```, build and watch the css by running:
 
 ```bash
 $ sass --watch scss:css
 ```
 
-That's just about everything. You can preview the app either in the browser or on the iOS Simulator.
+If you change ```scss/app.scss```, you'll see that sass automatically re-compiles the css. When you're done with that, you can preview the app either in the browser or on the iOS Simulator.
 
-To open the app in the browser, run:
+To open the app in the browser at ```http://localhost:8000/```, make sure you're in the ```www/``` directory and run:
 
 ```bash
 $ python -m SimpleHTTPServer 8000
-$ open http://localhost:8000/
 ```
 
-To open the app in the iOS Simulator, make sure that you have both the XCode Developer Tools and Cordova installed, and then run:
+To open the app in the iOS Simulator, make sure that you have both the Xcode Developer Tools and Cordova installed, and then run:
 
 ```bash
 $ cordova platform add ios
