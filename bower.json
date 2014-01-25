@@ -1,0 +1,19 @@
+{
+  "name": "ionic-angular-cordova-seed",
+  "version": "0.0.0",
+  "homepage": "https://github.com/driftyco/ionic-angular-cordova-seed",
+  "description": "The perfect starting point for an Ionic project",
+  "main": "www/index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "www/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ionic": "~0.9.21-alpha"
+  }
+}
