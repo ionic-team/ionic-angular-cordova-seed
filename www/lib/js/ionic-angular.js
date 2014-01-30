@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v0.9.21
+ * Ionic, v0.9.22
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -44,7 +44,8 @@ angular.module('ionic.ui', [
                             'ionic.ui.list',
                             'ionic.ui.checkbox',
                             'ionic.ui.toggle',
-                            'ionic.ui.radio'
+                            'ionic.ui.radio',
+                            'ionic.ui.touch'
                            ]);
 
 
@@ -1256,7 +1257,7 @@ angular.module('ionic.ui.checkbox', [])
                 '<label class="checkbox">' +
                   '<input type="checkbox" ng-model="ngModel" ng-value="ngValue" ng-change="ngChange()">' +
                 '</label>' +
-                '<div class="item-content" ng-transclude></div>' +
+                '<div class="item-content disable-pointer-events" ng-transclude></div>' +
               '</div>',
 
     compile: function(element, attr) {
@@ -1674,13 +1675,13 @@ angular.module('ionic.ui.radio', [])
     template: '<label class="item item-radio">' +
                 '<input type="radio" name="radio-group"' +
                 ' ng-model="ngModel" ng-value="ngValue" ng-change="ngChange()">' +
-                '<div class="item-content" ng-transclude></div>' +
-                '<i class="radio-icon icon ion-checkmark"></i>' +
+                '<div class="item-content disable-pointer-events" ng-transclude></div>' +
+                '<i class="radio-icon disable-pointer-events icon ion-checkmark"></i>' +
               '</label>',
 
     compile: function(element, attr) {
-      if(attr.name) element.find('input').attr('name', attr.name);
-      if(attr.icon) element.find('i').removeClass('ion-checkmark').addClass(attr.icon);
+      if(attr.name) element.children().eq(0).attr('name', attr.name);
+      if(attr.icon) element.children().eq(2).removeClass('ion-checkmark').addClass(attr.icon);
     }
   };
 })
@@ -2520,11 +2521,11 @@ angular.module('ionic.ui.toggle', [])
     },
     transclude: true,
     template: '<div class="item item-toggle">' +
-                '<div ng-transclude></div>' +
+                '<div class="disable-pointer-events" ng-transclude></div>' +
                 '<label class="toggle">' +
                   '<input type="checkbox" ng-model="ngModel" ng-value="ngValue" ng-change="ngChange()">' +
-                  '<div class="track">' +
-                    '<div class="handle"></div>' +
+                  '<div class="track disable-pointer-events">' +
+                    '<div class="handle disable-pointer-events"></div>' +
                   '</div>' +
                 '</label>' +
               '</div>',
@@ -2563,6 +2564,58 @@ angular.module('ionic.ui.toggle', [])
 });
 
 })(window.ionic);
+;
+
+// Similar to Angular's ngTouch, however it uses Ionic's tap detection
+// and click simulation. ngClick 
+
+(function(angular, ionic) {'use strict';
+
+
+angular.module('ionic.ui.touch', [])
+
+  .config(['$provide', function($provide) {
+    $provide.decorator('ngClickDirective', ['$delegate', function($delegate) {
+      // drop the default ngClick directive
+      $delegate.shift();
+      return $delegate;
+    }]);
+  }])
+
+  .directive('ngClick', ['$parse', function($parse) {
+    
+    function onTap(e) {
+      // wire this up to Ionic's tap/click simulation
+      ionic.clickElement(e.target, e);
+    }
+
+    // Actual linking function.
+    return function(scope, element, attr) {
+
+      var clickHandler = $parse(attr.ngClick);
+
+      element.on('click', function(event) {
+        scope.$apply(function() {
+          clickHandler(scope, {$event: (event)});
+        });
+      });
+
+      ionic.on('tap', onTap, element[0]);
+
+      // Hack for iOS Safari's benefit. It goes searching for onclick handlers and is liable to click
+      // something else nearby.
+      element.onclick = function(event) { };
+
+      scope.$on('$destroy', function () {
+        ionic.off('tap', onTap, element[0]);
+      });
+
+    };
+
+  }]);
+
+
+})(window.angular, window.ionic);
 ;
 (function() {
 'use strict';
