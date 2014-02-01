@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v0.9.22
+ * Ionic, v0.9.23-alpha
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -16,7 +16,7 @@
 window.ionic = {
   controllers: {},
   views: {},
-  version: '0.9.22'
+  version: '0.9.23-alpha'
 };;
 (function(ionic) {
 
@@ -245,8 +245,17 @@ window.ionic = {
           cancelable: false,
           detail: undefined
         };
-        evt = document.createEvent("CustomEvent");
-        evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+        try {
+          evt = document.createEvent("CustomEvent");
+          evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+        } catch (error) {
+          // fallback for browsers that don't support createEvent('CustomEvent')
+          evt = document.createEvent("Event");
+          for (var param in params) {
+            evt[param] = params[param];
+          }
+          evt.initEvent(event, params.bubbles, params.cancelable);
+        }
         return evt;
       };
 
@@ -319,7 +328,7 @@ window.ionic = {
   * Simple gesture controllers with some common gestures that emit
   * gesture events.
   *
-  * Ported from github.com/EightMedia/ionic.Gestures.js - thanks!
+  * Ported from github.com/EightMedia/hammer.js Gestures - thanks!
   */
 (function(ionic) {
   
@@ -1758,7 +1767,9 @@ window.ionic = {
       if(this.isReady) {
         cb();
       } else {
-        ionic.on('platformready', cb, document);
+        // the platform isn't ready yet, add it to this array
+        // which will be called once the platform is ready
+        readyCallbacks.push(cb);
       }
     },
 
@@ -1777,48 +1788,83 @@ window.ionic = {
 
     device: function() {
       if(window.device) return window.device;
-      console.error('device plugin required');
+      if(this.isCordova()) console.error('device plugin required');
       return {};
     },
 
     _checkPlatforms: function(platforms) {
       this.platforms = [];
+      var v = this.version().toString().replace('.', '_');
 
       if(this.isCordova()) {
         this.platforms.push('cordova');
       }
-      if(this.isIOS7()) {
-        this.platforms.push('ios7');
+      if(this.isIOS()) {
+        this.platforms.push('ios');
+        this.platforms.push('ios' + v.split('_')[0]);
+        this.platforms.push('ios' + v);
       }
       if(this.isIPad()) {
         this.platforms.push('ipad');
       }
       if(this.isAndroid()) {
         this.platforms.push('android');
+        this.platforms.push('android' + v.split('_')[0]);
+        this.platforms.push('android' + v);
       }
     },
 
     // Check if we are running in Cordova
     isCordova: function() {
-      return (window.cordova || window.PhoneGap || window.phonegap);
+      return !(!window.cordova && !window.PhoneGap && !window.phonegap);
     },
     isIPad: function() {
       return navigator.userAgent.toLowerCase().indexOf('ipad') >= 0;
     },
-    isIOS7: function() {
-      return this.device().platform == 'iOS' && parseFloat(window.device.version) >= 7.0;
+    isIOS: function() {
+      return this.is('ios');
     },
     isAndroid: function() {
-      return this.device().platform === "Android";
+      return this.is('android');
+    },
+
+    platform: function() {
+      // singleton to get the platform name
+      if(!platformName) this.setPlatform(this.device().platform);
+      return platformName;
+    },
+
+    setPlatform: function(n) {
+      platformName = n;
+    },
+
+    version: function() {
+      // singleton to get the platform version
+      if(!platformVersion) this.setVersion(this.device().version);
+      return platformVersion;
+    },
+
+    setVersion: function(v) {
+      if(v) {
+        v = v.split('.');
+        platformVersion = parseFloat(v[0] + '.' + (v.length > 1 ? v[1] : 0));
+      } else {
+        platformVersion = 0;
+      }
     },
 
     // Check if the platform is the one detected by cordova
     is: function(type) {
-      if(this.device.platform) {
-        return window.device.platform.toLowerCase() === type.toLowerCase();
+      var pName = this.platform();
+      if(pName) {
+        return pName.toLowerCase() === type.toLowerCase();
       }
       // A quick hack for 
       return navigator.userAgent.toLowerCase().indexOf(type.toLowerCase()) >= 0;
+    },
+
+    exitApp: function() {
+      navigator.app && navigator.app.exitApp && navigator.app.exitApp();
     },
 
     showStatusBar: function(val) {
@@ -1859,21 +1905,36 @@ window.ionic = {
 
   };
 
+  var platformName, // just the name, like iOS or Android
+  platformVersion, // a float of the major and minor, like 7.1
+  readyCallbacks = [];
 
   // setup listeners to know when the device is ready to go
   function onWindowLoad() {
-    // window is loaded, now lets listen for when the device is ready
-    document.addEventListener("deviceready", onCordovaReady, false);
+    if(ionic.Platform.isCordova()) {
+      // the window and scripts are fully loaded, and a cordova/phonegap 
+      // object exists then let's listen for the deviceready
+      document.addEventListener("deviceready", onPlatformReady, false);
+    } else {
+      // the window and scripts are fully loaded, but the window object doesn't have the
+      // cordova/phonegap object, so its just a browser, not a webview wrapped w/ cordova
+      onPlatformReady();
+    }
     window.removeEventListener("load", onWindowLoad, false);
   }
   window.addEventListener("load", onWindowLoad, false);
 
-  function onCordovaReady() {
+  function onPlatformReady() {
     // the device is all set to go, init our own stuff then fire off our event
     ionic.Platform.isReady = true;
     ionic.Platform.detect();
+    for(var x=0; x<readyCallbacks.length; x++) {
+      // fire off all the callbacks that were added before the platform was ready
+      readyCallbacks[x]();
+    }
+    readyCallbacks = [];
     ionic.trigger('platformready', { target: document });
-    document.removeEventListener("deviceready", onCordovaReady, false);
+    document.removeEventListener("deviceready", onPlatformReady, false);
   }
 
 })(window.ionic);
@@ -4951,7 +5012,8 @@ ionic.views.Scroll = ionic.views.View.inherit({
     initialize: function(opts) {
       opts = ionic.extend({
         focusFirstInput: false,
-        unfocusOnHide: true
+        unfocusOnHide: true,
+        focusFirstDelay: 600
       }, opts);
 
       ionic.extend(this, opts);
@@ -4959,11 +5021,16 @@ ionic.views.Scroll = ionic.views.View.inherit({
       this.el = opts.el;
     },
     show: function() {
+      var self = this;
+
       this.el.classList.add('active');
 
       if(this.focusFirstInput) {
-        var input = this.el.querySelector('input, textarea');
-        input && input.focus && input.focus();
+        // Let any animations run first
+        window.setTimeout(function() {
+          var input = self.el.querySelector('input, textarea');
+          input && input.focus && input.focus();
+        }, this.focusFirstDelay);
       }
     },
     hide: function() {
@@ -4972,9 +5039,12 @@ ionic.views.Scroll = ionic.views.View.inherit({
       // Unfocus all elements
       if(this.unfocusOnHide) {
         var inputs = this.el.querySelectorAll('input, textarea');
-        for(var i = 0; i < inputs.length; i++) {
-          inputs[i].blur && inputs[i].blur();
-        }
+        // Let any animations run first
+        window.setTimeout(function() {
+          for(var i = 0; i < inputs.length; i++) {
+            inputs[i].blur && inputs[i].blur();
+          }
+        });
       }
     }
   });

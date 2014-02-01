@@ -2,7 +2,7 @@
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v0.9.22
+ * Ionic, v0.9.23-alpha
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -469,8 +469,7 @@ angular.module('ionic.service.modal', ['ionic.service.templateLoad', 'ionic.serv
   };
 }]);
 ;
-(function() {
-'use strict';
+(function(ionic) {'use strict';
 
 angular.module('ionic.service.platform', [])
 
@@ -484,10 +483,7 @@ angular.module('ionic.service.platform', [])
 .provider('$ionicPlatform', function() {
 
   return {
-    setPlatform: function(p) {
-      platform = p;
-    },
-    $get: ['$q', '$timeout', function($q, $timeout) {
+    $get: ['$q', function($q) {
       return {
         /**
          * Some platforms have hardware back buttons, so this is one way to bind to it.
@@ -495,7 +491,7 @@ angular.module('ionic.service.platform', [])
          * @param {function} cb the callback to trigger when this event occurs
          */
         onHardwareBackButton: function(cb) {
-          this.ready(function() {
+          ionic.Platform.ready(function() {
             document.addEventListener('backbutton', cb, false);
           });
         },
@@ -506,7 +502,7 @@ angular.module('ionic.service.platform', [])
          * @param {function} fn the listener function that was originally bound.
          */
         offHardwareBackButton: function(fn) {
-          this.ready(function() {
+          ionic.Platform.ready(function() {
             document.removeEventListener('backbutton', fn);
           });
         },
@@ -520,17 +516,12 @@ angular.module('ionic.service.platform', [])
          * ready.
          */
         ready: function(cb) {
-          var self = this;
           var q = $q.defer();
 
-          $timeout(function readyWait() {
-            if(ionic.Platform.isReady) {
-              q.resolve();
-              cb();
-            } else {
-              $timeout(readyWait, 50);
-            }
-          }, 50);
+          ionic.Platform.ready(function(){
+            q.resolve();
+            cb();
+          });
 
           return q.promise;
         }
@@ -622,11 +613,11 @@ angular.module('ionic.service.templateLoad', [])
   };
 }]);
 ;
-angular.module('ionic.service.view', ['ui.router'])
+angular.module('ionic.service.view', ['ui.router', 'ionic.service.platform'])
 
 
-.run(     ['$rootScope', '$state', '$location', '$document', '$animate', 
-  function( $rootScope,   $state,   $location,   $document,   $animate) {
+.run(     ['$rootScope', '$state', '$location', '$document', '$animate', '$ionicPlatform', 
+  function( $rootScope,   $state,   $location,   $document,   $animate,   $ionicPlatform) {
 
   // init the variables that keep track of the view history
   $rootScope.$viewHistory = {
@@ -672,6 +663,21 @@ angular.module('ionic.service.view', ['ui.router'])
       $document[0].title = data.title;
     }
   });
+
+  // Triggered when devices with a hardware back button (Android) is clicked by the user
+  // This is a Cordova/Phonegap platform specifc method
+  function onHardwareBackButton(e) {
+    if($rootScope.$viewHistory.backView) {
+      // there is a back view, go to it
+      $rootScope.$viewHistory.backView.go();
+    } else {
+      // there is no back view, so close the app instead
+      ionic.Platform.exitApp();
+    }
+    e.preventDefault();
+    return false;
+  }
+  $ionicPlatform.onHardwareBackButton(onHardwareBackButton);
 
 }])
 
@@ -1293,7 +1299,7 @@ angular.module('ionic.ui.content', ['ionic.ui.service'])
 
 // The content directive is a core scrollable content area
 // that is part of many View hierarchies
-.directive('content', ['$parse', '$timeout', '$ionicPlatform', '$ionicScrollDelegate', function($parse, $timeout, $ionicPlatform, $ionicScrollDelegate) {
+.directive('content', ['$parse', '$timeout', '$ionicScrollDelegate', function($parse, $timeout, $ionicScrollDelegate) {
   return {
     restrict: 'E',
     replace: true,
@@ -1358,7 +1364,7 @@ angular.module('ionic.ui.content', ['ionic.ui.service'])
 
         // Otherwise, supercharge this baby!
         var hasBouncing = $scope.$eval($scope.hasBouncing);
-        var enableBouncing = (!$ionicPlatform.is('Android') && hasBouncing !== false) || hasBouncing === true;
+        var enableBouncing = (!ionic.Platform.isAndroid() && hasBouncing !== false) || hasBouncing === true;
         // No bouncing by default for Android users, lest they take up pitchforks
         // to our bouncing goodness
         sv = new ionic.views.Scroll({
@@ -2756,6 +2762,10 @@ angular.module('ionic.ui.viewState', ['ionic.service.view', 'ionic.service.gestu
         updateHeaderData(data);
       });
 
+      $rootScope.$on('viewState.titleUpdated', function(e, data) {
+        $scope.currentTitle = (data && data.title ? data.title : '');
+      });
+
       // If a nav page changes the left or right buttons, update our scope vars
       $scope.$parent.$on('viewState.leftButtonsChanged', function(e, data) {
         $scope.leftButtons = data;
@@ -2817,10 +2827,16 @@ angular.module('ionic.ui.viewState', ['ionic.service.view', 'ionic.service.gestu
           $scope.$emit('viewState.rightButtonsChanged', $scope.rightButtons);
         });
 
+        // watch for changes in the title
+        var deregTitle = $scope.$watch('title', function(val) {
+          $scope.$emit('viewState.titleUpdated', $scope);
+        });
+
         $scope.$on('$destroy', function(){
           // deregister on destroy
           deregLeftButtons();
           deregRightButtons();
+          deregTitle();
         });
 
       };
