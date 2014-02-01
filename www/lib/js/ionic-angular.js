@@ -1259,11 +1259,11 @@ angular.module('ionic.ui.checkbox', [])
     },
     transclude: true,
 
-    template: '<div class="item item-checkbox">' +
-                '<label class="checkbox">' +
+    template: '<div class="item item-checkbox disable-pointer-events">' +
+                '<label class="checkbox enable-pointer-events">' +
                   '<input type="checkbox" ng-model="ngModel" ng-value="ngValue" ng-change="ngChange()">' +
                 '</label>' +
-                '<div class="item-content disable-pointer-events" ng-transclude></div>' +
+                '<div class="item-content" ng-transclude></div>' +
               '</div>',
 
     compile: function(element, attr) {
@@ -2526,12 +2526,12 @@ angular.module('ionic.ui.toggle', [])
       ngChange: '&'
     },
     transclude: true,
-    template: '<div class="item item-toggle">' +
-                '<div class="disable-pointer-events" ng-transclude></div>' +
-                '<label class="toggle">' +
+    template: '<div class="item item-toggle disable-pointer-events">' +
+                '<div ng-transclude></div>' +
+                '<label class="toggle enable-pointer-events">' +
                   '<input type="checkbox" ng-model="ngModel" ng-value="ngValue" ng-change="ngChange()">' +
                   '<div class="track disable-pointer-events">' +
-                    '<div class="handle disable-pointer-events"></div>' +
+                    '<div class="handle"></div>' +
                   '</div>' +
                 '</label>' +
               '</div>',
