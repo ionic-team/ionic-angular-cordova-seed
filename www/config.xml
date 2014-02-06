@@ -4,8 +4,8 @@
     <description>
         A sample Ionic Framework app using Cordova and AngularJS
     </description>
-    <author email="max@drifty.com" href="http://ionicframework.com">
-        Apache Cordova Team
+    <author email="support@drifty.com" href="http://ionicframework.com/">
+        Ionic Framework Team
     </author>
     <content src="index.html" />
     <access origin="*" />
