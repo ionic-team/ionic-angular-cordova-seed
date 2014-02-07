@@ -6,3 +6,7 @@
   width: 96px;
   height: 96px;
 }
+
+.scroll, .angular-leaflet-map {
+  height: 100%;
+}
