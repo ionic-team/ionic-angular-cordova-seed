@@ -15,9 +15,9 @@ angular.module('starter.controllers', [])
             }
         },
         center: {
-            lat: 51.505,
-            lng: -0.09,
-            zoom: 8
+            lat: 44.52,
+            lng: -122.68,
+            zoom: 5
         }
     };
 })
