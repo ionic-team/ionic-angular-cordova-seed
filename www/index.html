@@ -11,15 +11,10 @@
     <!-- your app's css -->
     <link href="css/app.css" rel="stylesheet">
 
-    <!-- angularjs scripts -->
-    <script src="lib/js/ionic.js"></script>
-    <script src="lib/js/angular/angular.js"></script>
-    <script src="lib/js/angular/angular-animate.js"></script>
-    <script src="lib/js/angular/angular-sanitize.js"></script>
-    <script src="lib/js/angular-ui/angular-ui-router.js"></script>
-    <script src="lib/js/ionic-angular.js"></script>
+    <!-- ionic/angularjs scripts -->
+    <script src="lib/js/ionic.bundle.js"></script>
 
-    <!-- cordova script -->
+    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's script -->
@@ -35,20 +30,20 @@
 
     <!-- 
       The nav bar that will be updated as we navigate between views
-      Additional attributes set its look, nav-bar animation and icons
+      Additional attributes set its look, ion-nav-bar animation and icons
       Icons provided by Ionicons: http://ionicons.com/ 
     -->
-    <nav-bar type="bar-positive" 
+    <ion-nav-bar type="bar-positive" 
              animation="nav-title-slide-ios7" 
              back-button-type="button-icon" 
-             back-button-icon="ion-ios7-arrow-back"></nav-bar>
+             back-button-icon="ion-ios7-arrow-back"></ion-nav-bar>
 
     <!-- 
-      The views will be rendered in the <nav-view> directive below
+      The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
     -->
-    <nav-view></nav-view>
+    <ion-nav-view></ion-nav-view>
 
   </body>
 </html>
