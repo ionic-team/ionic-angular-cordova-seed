@@ -18,9 +18,9 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
 
     // setup an abstract state for the tabs directive
     .state('tab', {
-      url: "/tab",
+      url: '/tab',
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: 'templates/tabs.html'
     })
 
     // the pet tab has its own child nav-view and history
